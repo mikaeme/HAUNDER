@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Etusivu</title>
+    <title>Alku</title>
+    <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
-
+<div class="forms">
+    <div class="form-wrapper">
+        <h3>Uusi koira</h3>
+        <form class="dog-form"
+              id="add-dog-form">
+            <input class="dog-form" type="text" name="name" placeholder="Nimi" required>
+            <input class="dog-form" type="text" name="gender" placeholder="Sukupuoli" required>
+            <input class="dog-form" type="text" name="birthdate" placeholder="Syntymäaika" required>
+            <input class="dog-form" type="number" name="weight" placeholder="Paino">
+            <select class="add-breed" type="text" name="breed"><option value="">Valitse rotu</option></select>
+            <select class="add-location" type="text"name="location"><option value="">Valitse sijainti</option></select>
+            <input class="dog-form" type="number" name="size" placeholder="Koko">
+            </select>
+            <!--<input class="dog-form"
+                   type="file"
+                   name="cat"
+                   accept="image/*"
+                   placeholder="Choose file">-->
+            <button class="dog-form" type="submit">Upload</button>
+        </form>
+    </div>
+</div>
+<script src="js/forms.js"></script>
+<script src="js/serialize.js"></script>
 </body>
 </html>
