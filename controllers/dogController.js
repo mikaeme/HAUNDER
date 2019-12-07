@@ -8,6 +8,10 @@ const dog_list_get = async (req, res) => {
   const dogs = await dogModel.getAllDogs();
   await res.json(dogs);
 };
+const dog_get = async (req, res) => {
+  const dog = await dogModel.getDog(req.params.id);
+  await res.json(dog[0]);
+};
 
 const breed_list_get = async (req, res) => {
   const breeds = await dogModel.getAllBreeds();
@@ -39,8 +43,8 @@ const dog_create_post = async (req, res) => {
       const params = [
         req.body.name,
         req.body.gender,
-        req.body.birthdate,
-        req.body.weight,
+        req.body.activity,
+        req.body.ownerId,
         req.body.breed,
         req.body.location,
           req.body.size,
@@ -56,6 +60,7 @@ const dog_create_post = async (req, res) => {
 //  }
 };
 module.exports = {
+  dog_get,
   dog_list_get,
   breed_list_get,
   location_list_get,

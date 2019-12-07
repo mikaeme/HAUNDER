@@ -6,28 +6,78 @@
     <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="forms">
-    <div class="form-wrapper">
-        <h3>Uusi koira</h3>
-        <form class="dog-form"
-              id="add-dog-form">
-            <input class="dog-form" type="text" name="name" placeholder="Nimi" required>
-            <input class="dog-form" type="text" name="gender" placeholder="Sukupuoli" required>
-            <input class="dog-form" type="text" name="birthdate" placeholder="Syntymäaika" required>
-            <input class="dog-form" type="number" name="weight" placeholder="Paino">
-            <select class="add-breed" type="text" name="breed"><option value="">Valitse rotu</option></select>
-            <select class="add-location" type="text"name="location"><option value="">Valitse sijainti</option></select>
-            <input class="dog-form" type="number" name="size" placeholder="Koko">
-            </select>
-            <!--<input class="dog-form"
-                   type="file"
-                   name="cat"
-                   accept="image/*"
-                   placeholder="Choose file">-->
-            <button class="dog-form" type="submit">Upload</button>
-        </form>
+<div class="container">
+    <div class="forms" id="login-wrapper">
+        <div class="form-wrapper">
+            <h3>Login</h3>
+            <form id="login-form" class="user-form">
+                <div>
+                    <label>Käyttäjätunnus:</label>
+                    <input class="user-form" type="text" name="username"/>
+                </div>
+                <div>
+                    <label>Salasana:</label>
+                    <input class="user-form" type="password" name="password"/>
+                </div>
+                <div>
+                    <button class="user-form" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+        <div class="form-wrapper">
+            <h3>Register</h3>
+            <form class="user-form" id="add-user-form">
+                <input class="user-form"
+                       type="text"
+                       name="username"
+                       pattern=".{3,}"
+                       placeholder="Käyttäjätunnus"
+                       required>
+                <input class="user-form" type="password" name="password" pattern="(?=.*[A-Z]).{8,}"
+                       placeholder="Salasana" required>
+                <button class="user-form" type="submit">Save</button>
+            </form>
+        </div>
     </div>
+    <header id="log-out" style="display: none;">
+        <p id="user-info"></p>
+        <button class="user-form">Log out</button>
+    </header>
+
+    <main style="display: none">
+        <h1>Koirasi</h1>
+        <ul>
+
+        </ul>
+        <hr>
+        <div class="form-wrapper">
+            <h3>Uusi koira</h3>
+            <form class="dog-form"
+                  id="add-dog-form">
+                <input class="dog-form" type="text" name="name" placeholder="Nimi" required>
+                <select class="dog-form" type="number" name="gender">
+                    <option value="1"> Naaras</option>
+                    <option value="2"> Uros</option></select>
+                <input class="dog-form" type="text" name="activity" placeholder="Harrastus" required>
+                <input class="dog-form" type="number" name="ownerId" placeholder="OmistajaID">
+                <select class="add-breed" name="breed"><option value="">Valitse rotu</option></select>
+                <select class="add-location" name="location"><option value="">Valitse sijainti</option></select>
+                <select class="dog-form" type="number" name="size" placeholder="Koko">
+                    <option value="1">Iso</option>
+                    <option value="2">Keskikokoinen</option>
+                    <option value="3">Pieni</option>
+                </select>
+                <!--<input class="dog-form"
+                       type="file"
+                       name="cat"
+                       accept="image/*"
+                       placeholder="Choose file">-->
+                <button class="dog-form" type="submit">Upload</button>
+            </form>
+        </div>
+    </main>
 </div>
+
 <script src="js/forms.js"></script>
 <script src="js/serialize.js"></script>
 </body>

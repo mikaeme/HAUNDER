@@ -2,10 +2,20 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
+const getDog = async (id) => {
+  try {
+    const [rows] = await promisePool.execute(
+        'SELECT * FROM dog WHERE dogId = ?;',
+        [id]);
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
 const getAllDogs = async () => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT * FROM haunder_dog;');
+        'SELECT * FROM dog;');
     return rows;
   } catch (e) {
     console.log('error', e.message);
@@ -48,6 +58,7 @@ const addDog = async (params) => {
 };
 
 module.exports = {
+  getDog,
   getAllDogs,
   getAllBreeds,
   getAllLocations,

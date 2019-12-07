@@ -7,6 +7,8 @@ const upload = multer({dest: 'uploads/'});
 const dogController = require('../controllers/dogController');
 
 router.get('/', dogController.dog_list_get);
+router.get('/:id', dogController.dog_get);
+
 
 router.get('/breeds', dogController.breed_list_get);
 router.get('/locations', dogController.location_list_get);
