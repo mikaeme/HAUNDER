@@ -69,7 +69,6 @@ const getDog = async () => {
 
 // create breed options to <select>
 const createBreedOptions = (breeds) => {
-
   breedList.forEach((list) => {
     list.innerHTML='';
     breeds.forEach((breed) => {
@@ -89,9 +88,8 @@ const getBreeds = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/dog/breeds', options);
+    const response = await fetch(url + '/form/breeds', options);
     const breeds = await response.json();
-    console.log('breeds:', breeds);
     createBreedOptions(breeds);
   } catch (e) {
     console.log(e.message);
@@ -119,7 +117,7 @@ const getLocations = async () => {
         'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
       },
     };
-    const response = await fetch(url + '/dog/locations', options);
+    const response = await fetch(url + '/form/locations', options);
     const locations = await response.json();
     createLocationOptions(locations);
   } catch (e) {
@@ -127,8 +125,7 @@ const getLocations = async () => {
   }
 };
 
-getBreeds();
-getLocations();
+
 
 // submit dog form
 addForm.addEventListener('submit', async (evt) => {
@@ -144,6 +141,7 @@ addForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/', fetchOptions);
   const json = await response.json();
   console.log('add response', json);
+  getDog();
 });
 
 // login
@@ -171,7 +169,8 @@ loginForm.addEventListener('submit', async (evt) => {
     main.style.display = 'block';
     userInfo.innerHTML = `Hello ${json.user.name}`;
     getDog();
-    getUsers();
+    getBreeds();
+    getLocations();
   }
 });
 
@@ -222,7 +221,8 @@ addUserForm.addEventListener('submit', async (evt) => {
   main.style.display = 'block';
   userInfo.innerHTML = `Hello ${json.user.username}`;
   getDog();
-  getUsers();
+  getBreeds();
+  getLocations();
 });
 
 // when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
@@ -232,5 +232,6 @@ if (sessionStorage.getItem('token')) {
   logOut.style.display = 'block';
   main.style.display = 'block';
   getDog();
-  getUsers();
+  getBreeds();
+  getLocations();
 };

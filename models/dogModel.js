@@ -25,20 +25,17 @@ const getAllDogs = async () => {
 const getAllBreeds = async () => {
   try {
     const [rows] =await promisePool.execute(
-        'SELECT * FROM breed'
-    );
+        'SELECT * FROM breed;');
     return rows;
   } catch (e) {
     console.log('error', e.message);
   }
 };
-
-// get the list of dog locations from the database
+// get the list of locations from the database
 const getAllLocations = async () => {
   try {
     const [rows] =await promisePool.execute(
-        'SELECT * FROM location'
-    );
+        'SELECT * FROM location;');
     return rows;
   } catch (e) {
     console.log('error', e.message);
