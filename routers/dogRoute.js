@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const express = require('express');
 const router = express.Router();
 const {body, sanitizeBody} = require('express-validator');
@@ -12,7 +12,7 @@ router.get('/:id', dogController.dog_get);
 router.get('/breeds', dogController.breed_list_get);
 router.get('/locations', dogController.location_list_get);
 
-/*router.post('/', upload.single('dog'), (req, res, next) => {
+router.post('/', upload.single('dog'), (req, res, next) => {
   console.log('dog post file', req.file);
   if (req.file === undefined) {
     res.json({
@@ -25,7 +25,7 @@ router.get('/locations', dogController.location_list_get);
   } else {
     next();
   }
-});*/
+});
 
 router.post('/',
  /*   [

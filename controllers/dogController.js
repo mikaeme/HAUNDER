@@ -24,21 +24,21 @@ const location_list_get = async (req, res) => {
 };
 
 const dog_create_post = async (req, res) => {
-/*  const errors = validationResult(req);
+  const errors = validationResult(req);
   console.log(req.body);
   if (!errors.isEmpty()) {
     res.send(errors.array());
   } else {
     try {
- /*    //create thumbnail
+     //create thumbnail
       const thumb = await resize.makeThumbnail(req.file.path,
           'thumbnails/' + req.file.filename,
           {width: 160, height: 160});
       console.log('thumb', thumb);
 
       // get coordinates
- /*     const coords = await imageMeta.getCoordinates(req.file.path);
-      console.log('coords', coords);*/
+      const coords = await imageMeta.getCoordinates(req.file.path);
+      console.log('coords', coords);
 
       const params = [
         req.body.name,
@@ -47,17 +47,17 @@ const dog_create_post = async (req, res) => {
         req.body.ownerId,
         req.body.breed,
         req.body.location,
-          req.body.size,
-        //req.file.filename,
+        req.body.size,
+        req.file.filename,
       ];
       console.log('create', params);
       const dog = await dogModel.addDog(params);
       await res.json({message: 'upload ok'});
- //   } catch (e) {
- //     console.log('exif error', e);
- //     res.status(400).json({message: e.message});
- //   }
-//  }
+    } catch (e) {
+      console.log('exif error', e);
+      res.status(400).json({message: e.message});
+    }
+  }
 };
 module.exports = {
   dog_get,

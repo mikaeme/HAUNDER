@@ -10,15 +10,18 @@ const addUserForm = document.querySelector('#add-user-form');
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
-
+let currentId;
 
 // Create dog cards
 const createDogCards = (dogs) => {
+
   //clear ul
   ul.innerHTML = '';
   dogs.forEach((dog) => {
+    console.log('currentId', currentId);
+    if(dog.ownerId === currentId){
     const img = document.createElement('img');
-    img.src = url + '/thumbnails/' + dog.filename;
+    img.src = url + '/dog/thumbnails/' + dog.profilePic;
     img.alt = dog.name;
     img.classList.add('resp');
 
@@ -31,10 +34,13 @@ const createDogCards = (dogs) => {
     p1.innerHTML = `Sukupuoli: ${dog.gender}`;
 
     const p2 = document.createElement('p');
-    p2.innerHTML = `Koko: ${dog.size}`;
+    p2.innerHTML = `Rotu: ${dog.breed}`;
 
     const p3 = document.createElement('p');
-    p3.innerHTML = `Rotu: ${dog.breed}`;
+    p3.innerHTML = `Koko: ${dog.size}`;
+
+    const p4 = document.createElement('p');
+    p4.innerHTML = `Kotipaikka: ${dog.location}`;
 
     const li = document.createElement('li');
     li.classList.add('dog-form');
@@ -44,7 +50,9 @@ const createDogCards = (dogs) => {
     li.appendChild(p1);
     li.appendChild(p2);
     li.appendChild(p3);
+    li.appendChild(p4);
     ul.appendChild(li);
+  }
   });
 };
 
@@ -97,7 +105,6 @@ const getBreeds = async () => {
 };
 // create location options to <select>
 const createLocationOptions = (locations) => {
-
   locationList.forEach((list) => {
     list.innerHTML='';
     locations.forEach((location) => {
@@ -125,20 +132,18 @@ const getLocations = async () => {
   }
 };
 
-
-
 // submit dog form
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const fd = new serializeJson(addForm);
+  const fd = new FormData(addForm);
   const fetchOptions = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
     },
-    body: JSON.stringify(fd),
+    body: fd,
   };
-  const response = await fetch(url + '/', fetchOptions);
+  const response = await fetch(url + '/dog', fetchOptions);
   const json = await response.json();
   console.log('add response', json);
   getDog();
@@ -167,7 +172,8 @@ loginForm.addEventListener('submit', async (evt) => {
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
     main.style.display = 'block';
-    userInfo.innerHTML = `Hello ${json.user.name}`;
+    userInfo.innerHTML = `Hello ${json.user.username}`;
+    currentId = json.user.userId;
     getDog();
     getBreeds();
     getLocations();

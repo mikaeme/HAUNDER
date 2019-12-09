@@ -7,11 +7,17 @@ const cors = require('cors');
 const dogRoute = require('./routers/dogRoute');
 const authRoute = require('./routers/authRoute');
 const formRoute = require('./routers/formRoute');
+const userRoute = require('./routers/userRouter');
 
-app.use(express.static('uploads'));
+app.use(express.static('/dog/uploads'));
+app.use('/dog/thumbnails', express.static('/thumbnails'));
+
 app.use(cors());
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+
+app.use('/dog', passport.authenticate('jwt', {session: false}), dogRoute);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.use('/dog', dogRoute);
 app.use('/auth', authRoute);

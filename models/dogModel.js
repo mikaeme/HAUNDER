@@ -15,7 +15,12 @@ const getDog = async (id) => {
 const getAllDogs = async () => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT * FROM dog;');
+        'SELECT dog.*, breed.breed as "breed", gender.gender as "gender", ' +
+        'size.size as "size", location.location as "location" FROM dog ' +
+        'JOIN breed ON dog.breed = breed.breedId ' +
+        'JOIN size ON dog.size = size.sizeId ' +
+        'JOIN gender ON dog.gender = gender.genderId ' +
+        'JOIN location ON dog.location = location.locationId;');
     return rows;
   } catch (e) {
     console.log('error', e.message);
@@ -45,7 +50,7 @@ const addDog = async (params) => {
   try {
     const [rows] = await promisePool.execute(
      'INSERT INTO dog (name, gender, activity, ownerId, ' +
-        'breed, location, size) VALUES (?,?,?,?,?,?,?);',
+        'breed, location, size, profilePic) VALUES (?,?,?,?,?,?,?,?);',
         params);
     console.log('params', params);
     return rows;
