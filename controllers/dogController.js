@@ -1,6 +1,7 @@
 'use strict';
 const {validationResult} = require('express-validator');
 const dogModel = require('../models/dogModel');
+const userModel = require('../models/UserModel');
 const resize = require('../utils/resize');
 const imageMeta = require('../utils/imageMeta');
 
@@ -25,6 +26,8 @@ const location_list_get = async (req, res) => {
 
 const dog_create_post = async (req, res) => {
   const errors = validationResult(req);
+  //get current user
+  const user = await userModel.getUser;
   console.log(req.body);
   if (!errors.isEmpty()) {
     res.send(errors.array());
@@ -44,11 +47,11 @@ const dog_create_post = async (req, res) => {
         req.body.name,
         req.body.gender,
         req.body.activity,
-        req.body.ownerId,
         req.body.breed,
         req.body.location,
         req.body.size,
         req.file.filename,
+        req.user.userId,
       ];
       console.log('create', params);
       const dog = await dogModel.addDog(params);

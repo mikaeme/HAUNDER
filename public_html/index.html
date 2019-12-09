@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Alku</title>
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="css/style0.css" rel="stylesheet">
 </head>
 <body>
+
+<!------------ LOGIN FORM ------------------->
+
 <div class="container">
     <div class="forms" id="login-wrapper">
         <div class="form-wrapper">
@@ -26,6 +29,9 @@
         </div>
         <button id ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
     </div>
+
+    <!-------------- REGISTER FORM -------------->
+
     <div class="forms" id="register-wrapper" style="display: none;">
         <div class="form-wrapper">
             <h3>Rekisteröidy</h3>
@@ -44,10 +50,7 @@
         </div>
     </div>
 
-    <header id="log-out" style="display: none;">
-        <p id="user-info"></p>
-        <button class="user-form">Kirjaudu ulos</button>
-    </header>
+    <!-------------- USER HOMEPAGE -------------->
 
     <main style="display: none">
         <h1>Koirasi</h1>
@@ -56,6 +59,9 @@
         </ul>
         <hr>
         <div class="form-wrapper">
+
+            <!----------------- EDIT DOG ------------------>
+
             <h3>Uusi koira</h3>
             <form class="dog-form"
                   id="add-dog-form">
@@ -64,7 +70,6 @@
                     <option value="1"> Naaras</option>
                     <option value="2"> Uros</option></select>
                 <input class="dog-form" type="text" name="activity" placeholder="Harrastus" required>
-                <input class="dog-form" type="number" name="ownerId" placeholder="OmistajaID">
                 <select class="add-breed" name="breed">
                     <option value="">Valitse rotu</option></select>
                 <select class="add-location" name="location">
@@ -83,6 +88,13 @@
             </form>
         </div>
     </main>
+
+    <!--------------------- LOG OUT BUTTON ------------------------>
+
+    <header id="log-out" style="display: none;">
+        <p id="user-info"></p>
+        <button class="user-form">Kirjaudu ulos</button>
+    </header>
 </div>
 
 <script src="js/forms.js"></script>

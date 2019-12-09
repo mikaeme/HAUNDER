@@ -7,7 +7,8 @@ const cors = require('cors');
 const dogRoute = require('./routers/dogRoute');
 const authRoute = require('./routers/authRoute');
 const formRoute = require('./routers/formRoute');
-const userRoute = require('./routers/userRouter');
+const userRoute = require('./routers/userRoute');
+const postRoute = require('./routers/postRoute');
 
 app.use(express.static('uploads'));
 app.use('/thumbnails', express.static('thumbnails'));
@@ -22,5 +23,6 @@ app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/dog', dogRoute);
 app.use('/auth', authRoute);
 app.use('/form', formRoute);
+app.use('/post', postRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

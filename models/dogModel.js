@@ -49,8 +49,8 @@ const getAllLocations = async () => {
 const addDog = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-     'INSERT INTO dog (name, gender, activity, ownerId, ' +
-        'breed, location, size, profilePic) VALUES (?,?,?,?,?,?,?,?);',
+     'INSERT INTO dog (name, gender, activity, ' +
+        'breed, location, size, profilePic, ownerId) VALUES (?,?,?,?,?,?,?,?);',
         params);
     console.log('params', params);
     return rows;
