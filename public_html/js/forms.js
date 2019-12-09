@@ -11,7 +11,8 @@ const addUserForm = document.querySelector('#add-user-form');
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
-const goToRegister = document.querySelector('#goto');
+const goToRegister = document.querySelector('#go-to-reg');
+const goToLogin = document.querySelector('#go-to-login');
 
 // Create dog cards
 const createDogCards = (dogs) => {
@@ -159,10 +160,17 @@ addForm.addEventListener('submit', async (evt) => {
 //Go to register form
 goToRegister.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  console.log('register');
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'block';
 });
+
+//Go to login form
+goToLogin.addEventListener('click', async (evt) => {
+  evt.preventDefault();
+  loginWrapper.style.display = 'block';
+  registerWrapper.style.display = 'none';
+});
+
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
