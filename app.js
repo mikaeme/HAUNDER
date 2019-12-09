@@ -9,8 +9,8 @@ const authRoute = require('./routers/authRoute');
 const formRoute = require('./routers/formRoute');
 const userRoute = require('./routers/userRouter');
 
-app.use(express.static('/dog/uploads'));
-app.use('/dog/thumbnails', express.static('/thumbnails'));
+app.use(express.static('uploads'));
+app.use('/thumbnails', express.static('thumbnails'));
 
 app.use(cors());
 app.use(express.json()); // for parsing application/json

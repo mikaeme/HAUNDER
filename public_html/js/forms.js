@@ -15,15 +15,15 @@ const goToRegister = document.querySelector('#goto');
 
 // Create dog cards
 const createDogCards = (dogs) => {
+  //Identify current user
   const currentId = parseInt(sessionStorage.getItem('currentUser'));
-  console.log('currentId', currentId);
   //clear ul
   ul.innerHTML = '';
   dogs.forEach((dog) => {
-    console.log(dog.ownerId);
+    //show only current user´s dogs
     if(dog.ownerId === currentId){
     const img = document.createElement('img');
-    img.src = url + '/dog/thumbnails/' + dog.profilePic;
+    img.src = url + '/thumbnails/' + dog.profilePic;
     img.alt = dog.name;
     img.classList.add('resp');
 
@@ -162,7 +162,6 @@ goToRegister.addEventListener('click', async (evt) => {
   console.log('register');
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'block';
-  goToRegister.style.display = 'none';
 });
 
 // login
@@ -215,7 +214,6 @@ logOut.addEventListener('click', async (evt) => {
     alert('You have logged out');
     // show/hide forms + dogs
     loginWrapper.style.display = 'block';
-    goToRegister.style.display = 'block';
     logOut.style.display = 'none';
     main.style.display = 'none';
   }
