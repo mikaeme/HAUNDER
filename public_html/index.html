@@ -9,7 +9,7 @@
 <div class="container">
     <div class="forms" id="login-wrapper">
         <div class="form-wrapper">
-            <h3>Login</h3>
+            <h3>Kirjaudu sisään</h3>
             <form id="login-form" class="user-form">
                 <div>
                     <label>Käyttäjätunnus:</label>
@@ -20,12 +20,17 @@
                     <input class="user-form" type="password" name="password"/>
                 </div>
                 <div>
-                    <button class="user-form" type="submit">Log In</button>
+                    <button id="login-button" type="submit">Log In</button>
                 </div>
             </form>
         </div>
+    </div>
+    <div id="goto">
+        <button type="button">Ei käyttäjätunnusta? Reisteröidy täällä!</button>
+    </div>
+    <div class="forms" id="register-wrapper" style="display: none;">
         <div class="form-wrapper">
-            <h3>Register</h3>
+            <h3>Rekisteröidy</h3>
             <form class="user-form" id="add-user-form">
                 <input class="user-form"
                        type="text"
@@ -35,13 +40,14 @@
                        required>
                 <input class="user-form" type="password" name="password" pattern="(?=.*[A-Z]).{8,}"
                        placeholder="Salasana" required>
-                <button class="user-form" type="submit">Save</button>
+                <button id="register-button" type="submit">Save</button>
             </form>
         </div>
     </div>
+
     <header id="log-out" style="display: none;">
         <p id="user-info"></p>
-        <button class="user-form">Log out</button>
+        <button class="user-form">Kirjaudu ulos</button>
     </header>
 
     <main style="display: none">
@@ -74,7 +80,7 @@
                        name="dog"
                        accept="image/*"
                        placeholder="Choose file">
-                <button class="dog-form" type="submit">Upload</button>
+                <button id="upload-button" type="submit">Upload</button>
             </form>
         </div>
     </main>

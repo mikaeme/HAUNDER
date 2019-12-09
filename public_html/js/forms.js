@@ -1,6 +1,7 @@
 'use strict';
 const url = 'http://localhost:3000';
 const loginWrapper = document.querySelector('#login-wrapper');
+const registerWrapper = document.querySelector('#register-wrapper');
 const userInfo = document.querySelector('#user-info');
 const logOut = document.querySelector('#log-out');
 const main = document.querySelector('main');
@@ -10,15 +11,16 @@ const addUserForm = document.querySelector('#add-user-form');
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
-let currentId;
+const goToRegister = document.querySelector('#goto');
 
 // Create dog cards
 const createDogCards = (dogs) => {
-
+  const currentId = parseInt(sessionStorage.getItem('currentUser'));
+  console.log('currentId', currentId);
   //clear ul
   ul.innerHTML = '';
   dogs.forEach((dog) => {
-    console.log('currentId', currentId);
+    console.log(dog.ownerId);
     if(dog.ownerId === currentId){
     const img = document.createElement('img');
     img.src = url + '/dog/thumbnails/' + dog.profilePic;
@@ -68,6 +70,11 @@ const getDog = async () => {
     };
     const response = await fetch(url + '/dog', options);
     const dogs = await response.json();
+  //  const response2 = await fetch(url + '/user', options);
+  //  const cuser = await response2.json();
+ //   console.log(cuser);
+  //  currentId = cuser.userId;
+
     createDogCards(dogs);
   }
   catch (e) {
@@ -149,6 +156,15 @@ addForm.addEventListener('submit', async (evt) => {
   getDog();
 });
 
+//Go to register form
+goToRegister.addEventListener('click', async (evt) => {
+  evt.preventDefault();
+  console.log('register');
+  loginWrapper.style.display = 'none';
+  registerWrapper.style.display = 'block';
+  goToRegister.style.display = 'none';
+});
+
 // login
 loginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -172,8 +188,9 @@ loginForm.addEventListener('submit', async (evt) => {
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
     main.style.display = 'block';
-    userInfo.innerHTML = `Hello ${json.user.username}`;
-    currentId = json.user.userId;
+    userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
+//    const currentId = json.user.userId;
+    sessionStorage.setItem('currentUser', json.user.userId);
     getDog();
     getBreeds();
     getLocations();
@@ -194,9 +211,11 @@ logOut.addEventListener('click', async (evt) => {
     console.log(json);
     // remove token
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('currentUser');
     alert('You have logged out');
     // show/hide forms + dogs
     loginWrapper.style.display = 'block';
+    goToRegister.style.display = 'block';
     logOut.style.display = 'none';
     main.style.display = 'none';
   }
@@ -204,6 +223,7 @@ logOut.addEventListener('click', async (evt) => {
     console.log(e.message);
   }
 });
+
 
 // submit register form
 addUserForm.addEventListener('submit', async (evt) => {
@@ -223,18 +243,20 @@ addUserForm.addEventListener('submit', async (evt) => {
   sessionStorage.setItem('token', json.token);
   // show/hide forms + dogs
   loginWrapper.style.display = 'none';
+  registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
   main.style.display = 'block';
-  userInfo.innerHTML = `Hello ${json.user.username}`;
+  userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
   getDog();
   getBreeds();
   getLocations();
 });
 
-// when app starts, check if token exists and hide login form, show logout button and main content, get cats and users
+// when app starts, check if token exists and hide login form, show logout button and main content, get dogs and users
 if (sessionStorage.getItem('token')) {
   console.log('logged in');
   loginWrapper.style.display = 'none';
+  registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
   main.style.display = 'block';
   getDog();
