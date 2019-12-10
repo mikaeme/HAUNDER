@@ -15,8 +15,7 @@ const post_get = async (req, res) => {
 const create_post = async(req, res) => {
     const params = [
         req.body.posterId,
-        req.file.filename,
-        req.body.timestamp,
+        req.file.filename, ,
         req.body.title,
         req.body.text,
         req.body.locationId,

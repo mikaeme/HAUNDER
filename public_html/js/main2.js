@@ -29,21 +29,22 @@ const createPostCards = (posts) => {
         p1.innerHTML = `Poster: ${post.posterDog}`;
 
         const p2 = document.createElement('p');
-        p2.innerHTML = `Date: ${post.date}`;
+        p2.innerHTML = `Date: ${post.timestamp}`;
+
+        const p3 = document.createElement('p');
+        p3.innerHTML = `Location: ${post.location}`;
 
         const p4 = document.createElement('p');
         p4.innerHTML = post.text;
-
-//        const p5 = document.createElement('p');
-//        p5.innerHTML = `wallOwnerId: ${post.wallOwnerId}`;
 
         const li = document.createElement('li');
         li.classList.add('light-border');
 
         li.appendChild(h2);
         li.appendChild(figure);
- //       li.appendChild(p1);
+        li.appendChild(p1);
         li.appendChild(p2);
+        li.appendChild(p3);
         li.appendChild(p4);
 //        li.appendChild(p5);
         ul.appendChild(li);

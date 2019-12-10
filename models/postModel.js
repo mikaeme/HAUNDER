@@ -5,8 +5,10 @@ const promisePool = pool.promise();
 const getAllPosts = async() => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT post.*, dog.name as "posterDog"' +
-            'FROM post JOIN dog ON dog.dogId = post.posterId');
+            'SELECT post.*, dog.name as "posterDog", ' +
+            'location.location as "location" ' +
+            'FROM post JOIN dog ON dog.dogId = post.posterId ' +
+            'JOIN location ON post.locationId = location.locationId;');
         return rows;
     } catch (e) {
         console.log('error', e.message);
@@ -30,7 +32,7 @@ const getPost = async(id) => {
 const addPost = async(params) => {
     try {
         const [rows] = await promisePool.execute(
-            'INSERT INTO post (posterId, pic, timestamp, title, text, locationId) VALUES (?, ?, ?, ?, ?, ?);',
+            'INSERT INTO post (timestamp, posterId, pic, title, text, locationId) VALUES (CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?);',
             params,
         );
         return rows;
