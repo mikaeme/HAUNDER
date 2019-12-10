@@ -16,7 +16,7 @@ const createPostCards = (posts) => {
         // create li with DOM methods
         console.log('???');
         const img = document.createElement('img');
-        img.src = url + '/uploads/' + post.pic;
+        img.src = url + '/' + post.pic;
         img.alt = post.title;
         img.classList.add('resp');
 
