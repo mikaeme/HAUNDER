@@ -23,6 +23,6 @@ app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/dog', dogRoute);
 app.use('/auth', authRoute);
 app.use('/form', formRoute);
-app.use('/post', postRoute);
+app.use('/posting', postRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -4,7 +4,9 @@ const promisePool = pool.promise();
 
 const getAllPosts = async() => {
     try {
-        const [rows] = await promisePool.execute('SELECT post.*, user.username as posterId FROM post JOIN user ON user.userId = post.posterId');
+        const [rows] = await promisePool.execute(
+            'SELECT post.*, dog.name as "posterDog"' +
+            'FROM post JOIN dog ON dog.dogId = post.posterId');
         return rows;
     } catch (e) {
         console.log('error', e.message);
@@ -12,11 +14,11 @@ const getAllPosts = async() => {
     }
 };
 
-const getPost = async(params) => {
+const getPost = async(id) => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT * FROM post WHERE Id = ?;',
-            params,
+            'SELECT * FROM post WHERE postId = ?;',
+            [id],
         );
         return rows;
     } catch (e) {

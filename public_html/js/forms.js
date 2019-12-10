@@ -1,5 +1,6 @@
 'use strict';
 const url = 'http://localhost:3000';
+
 const loginWrapper = document.querySelector('#login-wrapper');
 const registerWrapper = document.querySelector('#register-wrapper');
 const userInfo = document.querySelector('#user-info');
@@ -14,7 +15,8 @@ const addForm = document.querySelector('#add-dog-form');
 const goToRegister = document.querySelector('#go-to-reg');
 const goToLogin = document.querySelector('#go-to-login');
 
-// Create dog cards
+//            Create dog cards
+
 const createDogCards = (dogs) => {
   //Identify current user
   const currentId = parseInt(sessionStorage.getItem('currentUser'));
@@ -59,7 +61,7 @@ const createDogCards = (dogs) => {
   });
 };
 
-// AJAX call
+//        AJAX call
 
 const getDog = async () => {
   console.log('getDog token ', sessionStorage.getItem('token'));
@@ -83,7 +85,8 @@ const getDog = async () => {
   }
 };
 
-// create breed options to <select>
+//        Create breed options to <select>
+
 const createBreedOptions = (breeds) => {
   breedList.forEach((list) => {
     list.innerHTML='';
@@ -96,7 +99,8 @@ const createBreedOptions = (breeds) => {
   });
 };
 
-// get breeds
+//        Get the list of breeds
+
 const getBreeds = async () => {
   try {
     const options = {
@@ -111,7 +115,8 @@ const getBreeds = async () => {
     console.log(e.message);
   }
 };
-// create location options to <select>
+//          Create location options to <select>
+
 const createLocationOptions = (locations) => {
   locationList.forEach((list) => {
     list.innerHTML='';
@@ -124,7 +129,8 @@ const createLocationOptions = (locations) => {
   });
 };
 
-//get locations
+//          Get the list of locations
+
 const getLocations = async () => {
   try {
     const options = {
@@ -140,7 +146,8 @@ const getLocations = async () => {
   }
 };
 
-// submit dog form
+//        Submit dog form
+
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const fd = new FormData(addForm);
@@ -157,14 +164,16 @@ addForm.addEventListener('submit', async (evt) => {
   getDog();
 });
 
-//Go to register form
+//          Go to register form
+
 goToRegister.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'block';
 });
 
-//Go to login form
+//          Go to login form
+
 goToLogin.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'block';
@@ -172,7 +181,8 @@ goToLogin.addEventListener('click', async (evt) => {
 });
 
 
-// login
+//          Login
+
 loginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(loginForm);
@@ -204,7 +214,8 @@ loginForm.addEventListener('submit', async (evt) => {
   }
 });
 
-// logout
+//        Logout
+
 logOut.addEventListener('click', async (evt) => {
   evt.preventDefault();
   try {
@@ -230,8 +241,8 @@ logOut.addEventListener('click', async (evt) => {
   }
 });
 
+//        Submit register form
 
-// submit register form
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(addUserForm);
@@ -258,7 +269,9 @@ addUserForm.addEventListener('submit', async (evt) => {
   getLocations();
 });
 
-// when app starts, check if token exists and hide login form, show logout button and main content, get dogs and users
+//      When app starts, check if token exists and hide login form,
+//      show logout button and main content, get dogs and users
+
 if (sessionStorage.getItem('token')) {
   console.log('logged in');
   loginWrapper.style.display = 'none';
@@ -268,4 +281,4 @@ if (sessionStorage.getItem('token')) {
   getDog();
   getBreeds();
   getLocations();
-};
+}

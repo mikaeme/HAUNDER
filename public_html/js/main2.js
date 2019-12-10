@@ -7,14 +7,16 @@ const modForm = document.querySelector('#modPostForm');
 const ul = document.querySelector('ul');
 const userLists = document.querySelectorAll('.add-owner');
 
-// create cat cards
+// create post views
 const createPostCards = (posts) => {
     // clear ul
     ul.innerHTML = '';
+    console.log('??');
     posts.forEach((post) => {
         // create li with DOM methods
+        console.log('???');
         const img = document.createElement('img');
-        img.src = url + '/' + post.pic;
+        img.src = url + '/uploads/' + post.pic;
         img.alt = post.title;
         img.classList.add('resp');
 
@@ -24,21 +26,29 @@ const createPostCards = (posts) => {
         h2.innerHTML = post.title;
 
         const p1 = document.createElement('p');
-        p1.innerHTML = `Poster: ${post.ownerId}`;
+        p1.innerHTML = `Poster: ${post.posterDog}`;
 
         const p2 = document.createElement('p');
         p2.innerHTML = `Date: ${post.date}`;
 
-        const p3 = document.createElement('p');
-        p3.innerHTML = `Title: ${post.title}`;
-
         const p4 = document.createElement('p');
-        p4.innerHTML = `Title: ${post.text}`;
+        p4.innerHTML = post.text;
 
-        const p5 = document.createElement('p');
-        p5.innerHTML = `wallOwnerId: ${post.wallOwnerId}`;
+//        const p5 = document.createElement('p');
+//        p5.innerHTML = `wallOwnerId: ${post.wallOwnerId}`;
 
-        // add selected cat's values to modify form
+        const li = document.createElement('li');
+        li.classList.add('light-border');
+
+        li.appendChild(h2);
+        li.appendChild(figure);
+ //       li.appendChild(p1);
+        li.appendChild(p2);
+        li.appendChild(p4);
+//        li.appendChild(p5);
+        ul.appendChild(li);
+
+      /*  // add selected cat's values to modify form
         const modButton = document.createElement('button');
         modButton.innerHTML = 'Modify';
         modButton.addEventListener('click', () => {
@@ -78,22 +88,23 @@ const createPostCards = (posts) => {
         li.appendChild(p3);
         li.appendChild(p4);
         li.appendChild(p5);
-        ul.appendChild(li);
+        ul.appendChild(li);*/
     });
 };
 
 // AJAX call
 const getPost = async() => {
     try {
-        const response = await fetch(url + '/post');
+        const response = await fetch(url + '/posting');
         const posts = await response.json();
+        console.log('?');
         createPostCards(posts);
     } catch (e) {
         console.log(e.message);
     }
 };
 getPost();
-
+/*
 // create user options to <select>
 const createUserOptions = (users) => {
     userLists.forEach((list) => {
@@ -121,7 +132,7 @@ const getUsers = async() => {
     }
 };
 getUsers();
-
+*/
 // submit add cat form
 addForm.addEventListener('submit', async(evt) => {
     evt.preventDefault();
@@ -130,12 +141,12 @@ addForm.addEventListener('submit', async(evt) => {
         method: 'POST',
         body: fd,
     };
-    const response = await fetch(url + '/post', fetchOptions);
+    const response = await fetch(url + '/posting', fetchOptions);
     const json = await response.json();
     console.log('add response', json);
     getPost();
 });
-
+/*
 // submit modify form
 modForm.addEventListener('submit', async(evt) => {
     evt.preventDefault();
@@ -159,4 +170,4 @@ modForm.addEventListener('submit', async(evt) => {
     const json = await response.json();
     console.log('modify response', json);
     getPost();
-});
+});*/
