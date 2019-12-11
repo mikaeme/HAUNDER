@@ -4,57 +4,30 @@
 <head>
     <meta charset="utf8">
     <title>Example</title>
-    <link href="./css/style2.css" rel="stylesheet">
+    <link href="./css/style4.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <h1>List of posts</h1>
-        <ul>
-            <!-- js creates list here -->
-        </ul>
+        <ul><!-- js creates list here --></ul>
         <hr>
         <div class="forms">
-            <!-- <div class="form-wrapper">
-     <h3>Add user</h3>
-      <form action="http://localhost:3000/user" method="post" class="light-border" id="addUserForm">
-        <input class="light-border" type="text" name="name" placeholder="Name" required>
-        <input class="light-border" type="email" name="email" placeholder="email" required>
-        <input class="light-border" type="password" name="passwd" placeholder="Password" required>
-        <button class="light-border" type="submit">Save</button>
-      </form>
-    </div> -->
-            <!-- Add post -->
+
+            <!--------------- ADD POST FORM ---------------->
+
             <div class="form-wrapper">
                 <h3>Add post</h3>
-                <form action="http://localhost:3000/post" method="post"
-                      class="light-border" enctype="multipart/form-data" id="addPostForm">
-                    <!--<input class="light-border" type="number" name="user_id" placeholder="user_id" required>-->
-                    <input class="light-border" type="text" name="posterId" placeholder="Username">
+                <form class="light-border" enctype="multipart/form-data" id="addPostForm">
+                    <input class="light-border" type="number" name="user_id" placeholder="user_id" required>
+                    <div id="add-dog-list"></div>
                     <input class="light-border" type="file" name="pic" placeholder="Choose file">
-    <!--                <input class="light-border" type="text" name="timestamp" placeholder="Timestamp">-->
                     <input class="light-border" type="text" name="title" placeholder="title" required>
                     <input class="light-border" type="text" name="text" placeholder="text" required>
-                    <input class="light-border" type="text" name="locationId" placeholder="Location">
-                    <!--<input class="light-border" type="location_id" name="location" placeholder="location_id" required>-->
-                    <!--<select class="light-border add-size" name="size">
-                    <option value="">Select size</option>
-                    </select>
-                    <select class="light-border add-age" name="age">
-                    <option value="">Select age</option>
-                    </select>
-                    <select class="light-border add-breed" name="breed">
-                    <option value="">Select breed</option>
-                    </select>
-                    <select class="light-border add-activity" name="activity">
-                    <option value="">Select activity</option>
-                    </select>-->
+                    <input class="light-border" type="text" name="locationId" placeholder="text" required>
                     <button class="light-border" type="submit">Upload</button>
                 </form>
             </div>
-
-
-
             <!-- Delete post 
             <div class="form-wrapper">
                 <h3>Delete post</h3>
@@ -68,26 +41,25 @@
                     <input class="light-border" type="file" name="post" placeholder="Choose file">
                     <button class="light-border" type="submit">Delete post</button>
                 </form>
-            </div> -->
-
-            <!-- Modify post -->
+            </div>
             <div class="form-wrapper">
                 <h3>Modify post</h3>
                 <form action="http://localhost:3000/post" id="modPostForm" class="light-border">
-                    <!--   <input class="light-border" type="text" name="name" placeholder="Name" required>
+                  <input class="light-border" type="text" name="name" placeholder="Name" required>
                     <input class="light-border" type="text" name="age" placeholder="Age" required>
                     <input class="light-border" type="text" name="weight" placeholder="Weight" required>
                     <select class="light-border add-owner" name="owner" required>
           <option value="">Select owner</option>
-        </select>-->
+        </select>
                     <input type="hidden" name="id">
                     <button class="light-border" type="submit">Save changes</button>
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
     <script src="./js/serialize.js"></script>
-    <script src="./js/main2.js"></script>
+    <script src="./js/forms.js"></script>
+    <script src="./js/posts.js"></script>
 </body>
 
 </html>

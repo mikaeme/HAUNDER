@@ -49,12 +49,13 @@
             <button id ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
         </div>
     </div>
+</div>
 
     <!-------------- USER HOMEPAGE -------------->
 
     <main style="display: none">
         <h1>Koirasi</h1>
-        <ul>
+        <ul id="dog-list">
 
         </ul>
         <hr>
@@ -86,18 +87,44 @@
                        placeholder="Choose file">
                 <button id="upload-button" type="submit">Upload</button>
             </form>
+            <button id ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
         </div>
     </main>
 
+    <!--------------------- MAIN VIEW ------------------------>
+
+    <div class="postcontainer" style="display: none;">
+        <div class="postcard">
+            <ul id="timeline">
+                <!-- js creates list here -->
+            </ul>
+        </div>
+
+        <div id="posting-form">
+            <div class="form-wrapper">
+                <h3>Add post</h3>
+                <form class="light-border" enctype="multipart/form-data" id="addPostForm">
+                    <input class="light-border" type="number" name="user_id" placeholder="user_id" required>
+                    <div id="add-dog-list"></div>
+                    <input class="light-border" type="file" name="pic" placeholder="Choose file">
+                    <input class="light-border" type="text" name="title" placeholder="title" required>
+                    <input class="light-border" type="text" name="text" placeholder="text" required>
+                    <input class="light-border" type="text" name="locationId" placeholder="Location" required>
+                    <button class="light-border" type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+        <button id ="go-to-user" type="button">Omat tiedot</button>
+    </div>
     <!--------------------- LOG OUT BUTTON ------------------------>
 
-    <header id="log-out" style="display: none;">
+    <footer id="log-out" style="display: none;">
         <p id="user-info"></p>
         <button class="user-form">Kirjaudu ulos</button>
-    </header>
-</div>
+    </footer>
 
 <script src="js/forms.js"></script>
+<script src="./js/posts.js"></script>
 <script src="js/serialize.js"></script>
 </body>
 </html>

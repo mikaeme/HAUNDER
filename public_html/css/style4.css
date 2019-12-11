@@ -11,8 +11,18 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+h3 {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+hr {
+    border-width: 0;
 }
 
 
@@ -28,6 +38,10 @@ main {
     overflow: scroll;
 }
 
+ul {
+    list-style: none;
+}
+
 .accountsTitle {
     font-size: 28px;
     font-weight: 800;
@@ -35,6 +49,10 @@ main {
     color: #16191C;
     margin-top: 12px;
     margin-bottom: 35px;
+}
+
+.feed {
+    display: block;
 }
 
 .container {
@@ -63,19 +81,19 @@ main {
 
 .postcontainer {
     display: inline-block;
-    max-width: 30em;
-    width: 400px;
-    background: #FFFFFF;
+    max-width: 100%;
+    width: 500px;
+    background: transparent;
     margin: 0;
-    position: absolute;
-    top: 90%;
+    position: relative;
     left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 24px;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    padding: 4px;
 }
 
-.postcard {
-    max-width: 40em;
+.postcard li {
+    max-width: 90%;
     border-radius: 6px;
     border: 1px solid #EBEBEB;
     background: #ffffff;
@@ -85,9 +103,47 @@ main {
     font-size: 12px;
     padding: 0 0 0 12px;
     margin-bottom: 9px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 8px 0 #0000000a;
     /*transition: box-shadow 0.15s ease-out 0.15s, border-color 0.15s ease-out, background 0.15s ease-out 0.15s, color 0.15s ease-out;*/
-    width: 100%;
+}
+
+.addpost {
+    max-width: 100%;
+    background: #FFFFFF;
+    border-radius: 6px;
+    border: 1px solid #EBEBEB;
+    margin: 0;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04);
+    padding: 24px;
+}
+
+.addpost a.icon {
+    text-decoration: none;
+    font-size: 35px;
+    color: red;
+    position: relative;
+    display: inline-block;
+    right: 0;
+}
+
+.addpost button.entypo-check {
+    border: none;
+    text-decoration: none;
+    font-size: 30px;
+    color: green;
+    position: relative;
+    display: inline-block;
+    right: 0;
+}
+
+.texti {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(148, 154, 161);
+    height: 100px;
+    width: 30em;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .postimg {
@@ -175,20 +231,6 @@ a:active {
     margin: 0 8px 0 auto;
 }
 
-
-/* Feed page */
-
-
-/*.top {
-    position: relative;
-    background-color: #ffffff;
-    height: 68px;
-    padding-top: 20px;
-    line-height: 50px;
-    overflow: hidden;
-    z-index: 2;
-}*/
-
 .topnav {
     position: relative;
     z-index: 2;
@@ -238,7 +280,7 @@ a:active {
     position: relative;
     display: inline-block;
     right: 0;
-    left: 70%;
+    left: 50%;
     top: 50%;
     transform: translateY(-20%);
 }
@@ -256,6 +298,60 @@ figure {
     padding: 0;
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 7%;
+    font-size: 17px;
+    background-color: #ff6600;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 0;
+    letter-spacing: 1px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.footer a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.footer a.icon {
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    right: 0;
+    left: 60%;
+    top: 20%;
+    transform: translateY(-60%);
+}
+
+.footer a.addposticon {
+    font-size: 58px;
+    position: relative;
+    display: inline-block;
+    right: 0;
+    left: 40%;
+    transform: translateX(-50%);
+    transform: translateY(-23%);
+}
+
 .resp {
     width: 100%;
+}
+
+.oopscontainer {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.oopscontainer,
+img {
+    max-width: 20em;
 }

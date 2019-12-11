@@ -3,17 +3,19 @@ const url = 'http://localhost:3000';
 
 const loginWrapper = document.querySelector('#login-wrapper');
 const registerWrapper = document.querySelector('#register-wrapper');
+const postContainer = document.querySelector('.postcontainer');
 const userInfo = document.querySelector('#user-info');
 const logOut = document.querySelector('#log-out');
 const main = document.querySelector('main');
 const loginForm = document.querySelector('#login-form');
-const ul = document.querySelector('ul');
+const dogList = document.querySelector('#dog-list');
 const addUserForm = document.querySelector('#add-user-form');
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
 const goToRegister = document.querySelector('#go-to-reg');
 const goToLogin = document.querySelector('#go-to-login');
+const goToPosts = document.querySelector('#go-to-posts');
 
 //            Create dog cards
 
@@ -21,7 +23,7 @@ const createDogCards = (dogs) => {
   //Identify current user
   const currentId = parseInt(sessionStorage.getItem('currentUser'));
   //clear ul
-  ul.innerHTML = '';
+  dogList.innerHTML = '';
   dogs.forEach((dog) => {
     //show only current user´s dogs
     if(dog.ownerId === currentId){
@@ -33,19 +35,15 @@ const createDogCards = (dogs) => {
     const figure = document.createElement('figure').appendChild(img);
 
     const h2 = document.createElement('h2');
-    h2.innerHTML = dog.name;
-
+      h2.innerHTML = dog.name;
     const p1 = document.createElement('p');
-    p1.innerHTML = `Sukupuoli: ${dog.gender}`;
-
+      p1.innerHTML = `Sukupuoli: ${dog.gender}`;
     const p2 = document.createElement('p');
-    p2.innerHTML = `Rotu: ${dog.breed}`;
-
+      p2.innerHTML = `Rotu: ${dog.breed}`;
     const p3 = document.createElement('p');
-    p3.innerHTML = `Koko: ${dog.size}`;
-
+      p3.innerHTML = `Koko: ${dog.size}`;
     const p4 = document.createElement('p');
-    p4.innerHTML = `Kotipaikka: ${dog.location}`;
+      p4.innerHTML = `Kotipaikka: ${dog.location}`;
 
     const li = document.createElement('li');
     li.classList.add('dog-form');
@@ -56,7 +54,7 @@ const createDogCards = (dogs) => {
     li.appendChild(p2);
     li.appendChild(p3);
     li.appendChild(p4);
-    ul.appendChild(li);
+    dogList.appendChild(li);
   }
   });
 };
@@ -73,11 +71,6 @@ const getDog = async () => {
     };
     const response = await fetch(url + '/dog', options);
     const dogs = await response.json();
-  //  const response2 = await fetch(url + '/user', options);
-  //  const cuser = await response2.json();
- //   console.log(cuser);
-  //  currentId = cuser.userId;
-
     createDogCards(dogs);
   }
   catch (e) {
@@ -170,6 +163,7 @@ goToRegister.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'block';
+  postContainer.style.display = 'none';
 });
 
 //          Go to login form
@@ -178,8 +172,19 @@ goToLogin.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'block';
   registerWrapper.style.display = 'none';
+  postContainer.style.display = 'none';
 });
 
+//          Go to main view
+
+goToPosts.addEventListener('click', async (evt) => {
+  evt.preventDefault();
+  loginWrapper.style.display = 'none';
+  registerWrapper.style.display = 'none';
+  main.style.display = 'none';
+  postContainer.style.display = 'block';
+
+});
 
 //          Login
 
@@ -204,7 +209,8 @@ loginForm.addEventListener('submit', async (evt) => {
     // show/hide forms + dogs
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
-    main.style.display = 'block';
+    main.style.display = 'none';
+    postContainer.style.display = 'block';
     userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
 //    const currentId = json.user.userId;
     sessionStorage.setItem('currentUser', json.user.userId);
@@ -263,6 +269,7 @@ addUserForm.addEventListener('submit', async (evt) => {
   registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
   main.style.display = 'block';
+  postContainer.style.display = 'none';
   userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
   getDog();
   getBreeds();
@@ -277,7 +284,8 @@ if (sessionStorage.getItem('token')) {
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
-  main.style.display = 'block';
+  main.style.display = 'none';
+  postContainer.style.display = 'block';
   getDog();
   getBreeds();
   getLocations();

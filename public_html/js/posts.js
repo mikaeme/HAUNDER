@@ -1,20 +1,18 @@
 'use strict';
-const url = 'http://localhost:3000'; // change url when uploading to server
+//const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const addForm = document.querySelector('#addPostForm');
-const modForm = document.querySelector('#modPostForm');
-const ul = document.querySelector('ul');
-const userLists = document.querySelectorAll('.add-owner');
+const addPost = document.querySelector('#addPostForm');
+const goToUser = document.querySelector('#go-to-user');
+const timeLine = document.querySelector('#timeline');
+//const modForm = document.querySelector('#modPostForm');
 
 // create post views
 const createPostCards = (posts) => {
-    // clear ul
-    ul.innerHTML = '';
-    console.log('??');
+    // clear timeline
+    timeLine.innerHTML = '';
     posts.forEach((post) => {
         // create li with DOM methods
-        console.log('???');
         const img = document.createElement('img');
         img.src = url + '/' + post.pic;
         img.alt = post.title;
@@ -23,19 +21,15 @@ const createPostCards = (posts) => {
         const figure = document.createElement('figure').appendChild(img);
 
         const h2 = document.createElement('h2');
-        h2.innerHTML = post.title;
-
+            h2.innerHTML = post.title;
         const p1 = document.createElement('p');
-        p1.innerHTML = `Poster: ${post.posterDog}`;
-
+            p1.innerHTML = `Poster: ${post.posterDog}`;
         const p2 = document.createElement('p');
-        p2.innerHTML = `Date: ${post.timestamp}`;
-
+            p2.innerHTML = `Date: ${post.timestamp}`;
         const p3 = document.createElement('p');
-        p3.innerHTML = `Location: ${post.location}`;
-
+            p3.innerHTML = `Location: ${post.location}`;
         const p4 = document.createElement('p');
-        p4.innerHTML = post.text;
+            p4.innerHTML = post.text;
 
         const li = document.createElement('li');
         li.classList.add('light-border');
@@ -46,8 +40,7 @@ const createPostCards = (posts) => {
         li.appendChild(p2);
         li.appendChild(p3);
         li.appendChild(p4);
-//        li.appendChild(p5);
-        ul.appendChild(li);
+        timeLine.appendChild(li);
 
       /*  // add selected cat's values to modify form
         const modButton = document.createElement('button');
@@ -98,14 +91,27 @@ const getPost = async() => {
     try {
         const response = await fetch(url + '/posting');
         const posts = await response.json();
-        console.log('?');
         createPostCards(posts);
     } catch (e) {
         console.log(e.message);
     }
 };
 getPost();
+
+//          Go to main view
+
+goToUser.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    loginWrapper.style.display = 'none';
+    registerWrapper.style.display = 'none';
+    main.style.display = 'block'
+    postContainer.style.display = 'none';
+
+});
+
+
 /*
+
 // create user options to <select>
 const createUserOptions = (users) => {
     userLists.forEach((list) => {
@@ -134,13 +140,13 @@ const getUsers = async() => {
 };
 getUsers();
 */
-// submit add cat form
-addForm.addEventListener('submit', async(evt) => {
+// submit add post form
+addPost.addEventListener('submit', async(evt) => {
     evt.preventDefault();
-    const fd = new FormData(addForm);
+    const pd = new FormData(addPost);
     const fetchOptions = {
         method: 'POST',
-        body: fd,
+        body: pd,
     };
     const response = await fetch(url + '/posting', fetchOptions);
     const json = await response.json();
