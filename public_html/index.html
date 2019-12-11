@@ -2,10 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Alku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>HAUNDR</title>
     <link href="css/style4.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./images/favicon/favicon.png" type="image/png">
 </head>
 <body>
+
+ <!----------- TOP NAV ------------>
+
+ <div class="topnav">
+     <a href="#home"><img class="topnav_logo" src="./images/whitelogo.png" heigth="90px" width="130px" /></a>
+
+     <!-- Navigation links (hidden by default) -->
+     <div id="myLinks">
+         <a href="#news">Control panel</a>
+         <a href="#contact">Friends</a>
+         <a href="#about">Settings</a>
+     </div>
+     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <span class="entypo-search"></span></a>
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <span class="entypo-cog"></span></a>
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <span class="fa fa-bars"></span></a>
+ </div>
 
 <!------------ LOGIN FORM ------------------->
 
@@ -94,12 +117,6 @@
     <!--------------------- MAIN VIEW ------------------------>
 
     <div class="postcontainer" style="display: none;">
-        <div class="postcard">
-            <ul id="timeline">
-                <!-- js creates list here -->
-            </ul>
-        </div>
-
         <div id="posting-form">
             <div class="form-wrapper">
                 <h3>Add post</h3>
@@ -112,6 +129,9 @@
                     <button class="light-border" type="submit">Upload</button>
                 </form>
             </div>
+        </div>
+        <div class="postcard">
+            <ul id="timeline"></ul>
         </div>
         <button id ="go-to-user" type="button">Omat tiedot</button>
     </div>
