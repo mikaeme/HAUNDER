@@ -183,6 +183,7 @@ goToPosts.addEventListener('click', async (evt) => {
   registerWrapper.style.display = 'none';
   main.style.display = 'none';
   postContainer.style.display = 'block';
+  logOut.style.display = 'block';
 
 });
 
@@ -241,6 +242,8 @@ logOut.addEventListener('click', async (evt) => {
     loginWrapper.style.display = 'block';
     logOut.style.display = 'none';
     main.style.display = 'none';
+    postContainer.style.display = 'none';
+
   }
   catch (e) {
     console.log(e.message);
