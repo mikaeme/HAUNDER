@@ -13,8 +13,9 @@ const post_get = async (req, res) => {
 };
 
 const create_post = async(req, res) => {
+    console.log(req)
     const params = [
-        req.body.user_id,
+        req.body.posterId,
         req.file.filename,
         req.body.title,
         req.body.text,

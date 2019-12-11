@@ -107,41 +107,12 @@ goToUser.addEventListener('click', async (evt) => {
 
 });
 
-
-/*
-
-// create user options to <select>
-const createUserOptions = (users) => {
-    userLists.forEach((list) => {
-        // clear user list
-        list.innerHTML = '';
-        users.forEach((user) => {
-            // create options with DOM methods
-            const option = document.createElement('option');
-            option.value = user.user_id;
-            option.innerHTML = user.name;
-            option.classList.add('light-border');
-            list.appendChild(option);
-        });
-    });
-};
-
-// get users to form options
-const getUsers = async() => {
-    try {
-        const response = await fetch(url + '/user');
-        const users = await response.json();
-        createUserOptions(users);
-    } catch (e) {
-        console.log(e.message);
-    }
-};
-getUsers();
-*/
 // submit add post form
 addPost.addEventListener('submit', async(evt) => {
     evt.preventDefault();
     const pd = new FormData(addPost);
+    const currentId = parseInt(sessionStorage.getItem('currentUser'));
+    pd.set('posterId', currentId);
     const fetchOptions = {
         method: 'POST',
         body: pd,

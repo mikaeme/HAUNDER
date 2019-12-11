@@ -5,9 +5,9 @@ const promisePool = pool.promise();
 const getAllPosts = async() => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT post.*, dog.name as "posterDog", ' +
+            'SELECT post.*, user.username as "posterDog", ' +
             'location.location as "location" ' +
-            'FROM post JOIN dog ON dog.dogId = post.posterId ' +
+            'FROM post JOIN user ON user.userId = post.posterId ' +
             'JOIN location ON post.locationId = location.locationId ' +
             'ORDER BY postId DESC;');
         return rows;
