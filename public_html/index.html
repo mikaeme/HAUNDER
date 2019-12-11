@@ -115,25 +115,26 @@
     </main>
 
     <!--------------------- MAIN VIEW ------------------------>
-
-    <div class="postcontainer" style="display: none;">
-        <div id="posting-form">
-            <div class="form-wrapper">
-                <h3>Add post</h3>
-                <form class="light-border" enctype="multipart/form-data" id="addPostForm">
-                    <input class="light-border" type="number" name="user_id" placeholder="user_id" required>
-                    <input class="light-border" type="file" name="pic" placeholder="Choose file">
-                    <input class="light-border" type="text" name="title" placeholder="title" required>
-                    <input class="light-border" type="text" name="text" placeholder="text" required>
-                    <input class="light-border" type="text" name="locationId" placeholder="Location" required>
-                    <button class="light-border" type="submit">Upload</button>
-                </form>
+    <div class="feed">
+        <div class="postcontainer" style="display: none;">
+            <div class="addpost">
+                <div class="form-wrapper">
+                    <h3>Add post</h3>
+                    <form class="light-border" enctype="multipart/form-data" id="addPostForm">
+                        <input class="light-border" type="number" name="user_id" placeholder="user_id" required>
+                        <input class="light-border" type="file" name="pic" placeholder="Choose file">
+                        <input class="light-border" type="text" name="title" placeholder="title" required>
+                        <input class="light-border" type="text" name="text" placeholder="text" required>
+                        <input class="light-border" type="text" name="locationId" placeholder="Location" required>
+                        <button class="light-border" type="submit">Upload</button>
+                    </form>
+                </div>
             </div>
+            <div class="postcard">
+                <ul id="timeline"></ul>
+            </div>
+            <button id ="go-to-user" type="button">Omat tiedot</button>
         </div>
-        <div class="postcard">
-            <ul id="timeline"></ul>
-        </div>
-        <button id ="go-to-user" type="button">Omat tiedot</button>
     </div>
     <!--------------------- LOG OUT BUTTON ------------------------>
 
