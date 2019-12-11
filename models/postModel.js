@@ -8,7 +8,8 @@ const getAllPosts = async() => {
             'SELECT post.*, dog.name as "posterDog", ' +
             'location.location as "location" ' +
             'FROM post JOIN dog ON dog.dogId = post.posterId ' +
-            'JOIN location ON post.locationId = location.locationId;');
+            'JOIN location ON post.locationId = location.locationId ' +
+            'ORDER BY postId DESC;');
         return rows;
     } catch (e) {
         console.log('error', e.message);
