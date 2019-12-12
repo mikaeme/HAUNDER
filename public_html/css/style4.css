@@ -45,6 +45,11 @@ ul {
     list-style: none;
 }
 
+button {
+    border: 0;
+    background-color: transparent;
+}
+
 figure {
     margin: 0;
     padding: 0;
