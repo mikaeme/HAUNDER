@@ -1,6 +1,6 @@
 'use strict';
-//const url = 'http://localhost:3000';
-const url ='http://10.114.34.105/node';
+const url = 'http://localhost:3000';
+//const url ='http://10.114.34.105/node';
 //const url ='https://10.114.34.105/node';
 
 const loginWrapper = document.querySelector('#login-wrapper');
@@ -152,6 +152,7 @@ logOut.addEventListener('click', async (evt) => {
     main.style.display = 'none';
     postContainer.style.display = 'none';
     ownPostContainer.style.display = 'none';
+    ownCommentContainer.style.display = 'none';
 
   }
   catch (e) {

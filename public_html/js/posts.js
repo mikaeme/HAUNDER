@@ -39,6 +39,7 @@ const createPostCards = (posts) => {
             p4.innerHTML = post.text;
         
         edit.addEventListener('click', () => {
+            sessionStorage.setItem('postId', post.postId);
             ownCommentContainer.style.display = 'block';
             postContainer.style.display = 'none';
         });
