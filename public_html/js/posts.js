@@ -3,7 +3,9 @@
 const addPost = document.querySelector('#addPostForm');
 const timeLine = document.querySelector('#timeline');
 const ownPostContainer = document.querySelector('.own-post-container');
-
+const imageModal = document.querySelector('#image-modal');
+const modalImage = document.querySelector('#image-modal img');
+const close = document.querySelector('#image-modal a');
 
 //          create post views
 
@@ -16,7 +18,13 @@ const createPostCards = (posts) => {
         img.src = url + '/' + post.pic;
         img.alt = post.title;
         img.classList.add('resp');
-        
+
+        // open large image when clicking image
+        img.addEventListener('click', () => {
+            modalImage.src = url + '/' + post.pic;
+            modalImage.alt = post.title;
+            imageModal.classList.toggle('hide');
+        });
         //Comment button
         const edit = document.createElement('button');
         edit.innerHTML = `Kommentoi`;
@@ -110,6 +118,12 @@ const getPost = async() => {
         console.log(e.message);
     }
 };
+
+// close modal
+close.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    imageModal.classList.toggle('hide');
+});
 getPost();
 
 //          submit add post form

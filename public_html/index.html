@@ -31,8 +31,7 @@
  </div>
 
 <!------------ LOGIN FORM ------------------->
-
-<div class="container">
+<div class="main-container">
     <div class="forms" id="login-wrapper">
         <div class="form-wrapper">
             <h3>Kirjaudu sisään</h3>
@@ -72,8 +71,6 @@
             <button class ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
         </div>
     </div>
-</div>
-
     <!-------------- USER HOMEPAGE -------------->
 
     <main style="display: none">
@@ -181,14 +178,17 @@
              <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
          </div>
      </div>
-
+ <div class="hide modal" id="image-modal">
+     <a href="#" class="close">Close</a>
+     <img src="" alt="">
+ </div>
+</div>
     <!--------------------- LOG OUT BUTTON ------------------------>
 
     <footer id="log-out" style="display: none;">
         <p id="user-info"></p>
         <button class="user-form">Kirjaudu ulos</button>
     </footer>
-
 
 <script src="js/forms.js"></script>
 <script src="./js/posts.js"></script>
