@@ -16,6 +16,8 @@ const createPostCards = (posts) => {
         img.src = url + '/' + post.pic;
         img.alt = post.title;
         img.classList.add('resp');
+        
+        let date = moment(post.timestamp).locale('fi').format('LLL');
 
         const figure = document.createElement('figure').appendChild(img);
 
@@ -24,7 +26,7 @@ const createPostCards = (posts) => {
         const p1 = document.createElement('p');
             p1.innerHTML = `Poster: ${post.posterDog}`;
         const p2 = document.createElement('p');
-            p2.innerHTML = `Date: ${post.timestamp}`;
+            p2.innerHTML = `Date: ${date}`;
         const p3 = document.createElement('p');
             p3.innerHTML = `Location: ${post.location}`;
         const p4 = document.createElement('p');
