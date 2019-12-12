@@ -1,5 +1,6 @@
 'use strict';
 const goToUser = document.querySelector('.go-to-user');
+const goToAddPost = document.querySelector('.go-to-addpost');
 const goToOwnPosts = document.querySelector('.go-to-own-posts');
 const goToRegister = document.querySelector('.go-to-reg');
 const goToLogin = document.querySelector('.go-to-login');
@@ -14,6 +15,18 @@ goToUser.addEventListener('click', async (evt) => {
   main.style.display = 'block';
   postContainer.style.display = 'none';
 });
+//         Go to add post
+
+goToAddPost.addEventListener('click', async(evt) => {
+    evt.preventDefault();
+    loginWrapper.style.display = 'none';
+    registerWrapper.style.display = 'none';
+    main.style.display = 'none';
+    postContainer.display = 'none';
+    postContainer.style.display = 'none';
+    ownPostContainer.style.display = 'none';
+});
+createPostCards();
 //          Go to own posts view
 
 goToOwnPosts.addEventListener('click', async (evt) => {
