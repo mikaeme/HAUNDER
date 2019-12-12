@@ -36,8 +36,8 @@ const createOwnPosts = (posts) => {
 
       edit.innerHTML = 'Edit';
       edit.addEventListener('click', () => {
-        console.log('???');
         editWrapper.style.display = 'block';
+        ownPosts.style.display = 'none';
         const inputs = editForm.querySelectorAll('input');
  //       inputs[0].value = post.posterDog;
         inputs[0].value = post.title;
@@ -78,6 +78,8 @@ getOwnPosts();
 // submit modify form
 editForm.addEventListener('submit', async(evt) => {
     evt.preventDefault();
+  editWrapper.style.display = 'none';
+  ownPosts.style.display = 'block';
     const data = serializeJson(editForm);
     const fetchOptions = {
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
@@ -97,5 +99,5 @@ editForm.addEventListener('submit', async(evt) => {
     const response = await fetch(url + '/posting', fetchOptions);
     const json = await response.json();
     console.log('modify response', json);
-    getPost();
+  getOwnPosts();
 });
