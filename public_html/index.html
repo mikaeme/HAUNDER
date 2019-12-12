@@ -2,10 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Alku</title>
-    <link href="css/style0.css" rel="stylesheet">
+    <title>HAUNDR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link href="css/style4.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./images/favicon/favicon.png" type="image/png">
 </head>
 <body>
+
+ <!----------- TOP NAV ------------>
+
+ <div class="topnav">
+     <a href="#home"><img class="topnav_logo" src="./images/whitelogo.png" heigth="90px" width="130px" /></a>
+
+     <!-- Navigation links (hidden by default) -->
+     <div id="myLinks">
+         <a href="#news">Control panel</a>
+         <a href="#contact">Friends</a>
+         <a href="#about">Settings</a>
+     </div>
+     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <span class="entypo-search"></span></a>
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <span class="entypo-cog"></span></a>
+     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <span class="fa fa-bars"></span></a>
+ </div>
 
 <!------------ LOGIN FORM ------------------->
 
@@ -27,7 +50,7 @@
                 </div>
             </form>
         </div>
-        <button id ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
+        <button class ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
     </div>
 
     <!-------------- REGISTER FORM -------------->
@@ -46,21 +69,22 @@
                        placeholder="Salasana" required>
                 <button id="register-button" type="submit">Tallenna</button>
             </form>
-            <button id ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
+            <button class ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
         </div>
     </div>
+</div>
 
     <!-------------- USER HOMEPAGE -------------->
 
     <main style="display: none">
         <h1>Koirasi</h1>
-        <ul>
+        <ul id="dog-list">
 
         </ul>
         <hr>
         <div class="form-wrapper">
 
-            <!----------------- EDIT DOG ------------------>
+            <!----------------- ADD/EDIT DOG ------------------>
 
             <h3>Uusi koira</h3>
             <form class="dog-form"
@@ -86,18 +110,71 @@
                        placeholder="Choose file">
                 <button id="upload-button" type="submit">Upload</button>
             </form>
+            <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
         </div>
     </main>
 
+    <!--------------------- MAIN VIEW ------------------------>
+    <div class="feed">
+        <div class="postcontainer" style="display: none;">
+            <div class="addpost">
+                <div class="form-wrapper">
+                    <h3>Add post</h3>
+                    <form class="light-border" enctype="multipart/form-data" id="addPostForm">
+                        <input class="light-border" type="file" name="pic" placeholder="Choose file">
+                        <input class="light-border" type="text" name="title" placeholder="title" required>
+                        <input class="light-border" type="text" name="text" placeholder="text" required>
+                        <select class="add-location" name="locationId">
+                            <option value="">Valitse sijainti</option></select>
+                        <button class="light-border" type="submit">Upload</button>
+                    </form>
+                </div>
+            </div>
+            <div class="postcard">
+                <ul id="timeline"></ul>
+            </div>
+            <button class ="go-to-user" type="button">Omat tietoni</button>
+            <button class ="go-to-own-posts" type="button">Omat viestini</button>
+        </div>
+    </div>
+ <!--------------------- EDIT OWN POSTS ------------------------>
+
+     <div class="feed">
+         <div class="own-post-container" style="display: none;">
+             <div class="editpost">
+                 <div class="edit-wrapper" style="display: none;">
+                     <h3>Muokkaa viestejä</h3>
+                     <form class="light-border" enctype="multipart/form-data" id="edit-post-form">
+<!--                         <input class="light-border" type="file" name="pic" placeholder="Choose file">-->
+                         <input class="light-border" type="text" name="title" placeholder="title">
+                         <input class="light-border" type="text" name="text" placeholder="text">
+                         <input class="light-border" type="hidden" name="postId" placeholder="text">
+                         <select class="add-location" name="locationId">
+                             <option value="">Valitse sijainti</option></select>
+                         <button class="light-border" type="submit">Tallenna</button>
+                     </form>
+                 </div>
+             </div>
+             <div class="postcard">
+                 <ul id="own-posts"></ul>
+             </div>
+             <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
+         </div>
+     </div>
+
     <!--------------------- LOG OUT BUTTON ------------------------>
 
-    <header id="log-out" style="display: none;">
+    <footer id="log-out" style="display: none;">
         <p id="user-info"></p>
         <button class="user-form">Kirjaudu ulos</button>
-    </header>
-</div>
+    </footer>
+
 
 <script src="js/forms.js"></script>
+<script src="./js/posts.js"></script>
+ <script src="./js/buttons.js"></script>
+<script src="./js/edit.js"></script>
 <script src="js/serialize.js"></script>
+<script src="js/moment.locales.js"></script>
 </body>
 </html>

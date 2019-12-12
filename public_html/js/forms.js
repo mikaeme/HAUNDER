@@ -1,25 +1,26 @@
 'use strict';
 const url = 'http://localhost:3000';
+
 const loginWrapper = document.querySelector('#login-wrapper');
 const registerWrapper = document.querySelector('#register-wrapper');
+const postContainer = document.querySelector('.postcontainer');
 const userInfo = document.querySelector('#user-info');
 const logOut = document.querySelector('#log-out');
 const main = document.querySelector('main');
 const loginForm = document.querySelector('#login-form');
-const ul = document.querySelector('ul');
+const dogList = document.querySelector('#dog-list');
 const addUserForm = document.querySelector('#add-user-form');
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
-const goToRegister = document.querySelector('#go-to-reg');
-const goToLogin = document.querySelector('#go-to-login');
 
-// Create dog cards
+//            Create dog cards
+
 const createDogCards = (dogs) => {
   //Identify current user
   const currentId = parseInt(sessionStorage.getItem('currentUser'));
   //clear ul
-  ul.innerHTML = '';
+  dogList.innerHTML = '';
   dogs.forEach((dog) => {
     //show only current user´s dogs
     if(dog.ownerId === currentId){
@@ -31,19 +32,15 @@ const createDogCards = (dogs) => {
     const figure = document.createElement('figure').appendChild(img);
 
     const h2 = document.createElement('h2');
-    h2.innerHTML = dog.name;
-
+      h2.innerHTML = dog.name;
     const p1 = document.createElement('p');
-    p1.innerHTML = `Sukupuoli: ${dog.gender}`;
-
+      p1.innerHTML = `Sukupuoli: ${dog.gender}`;
     const p2 = document.createElement('p');
-    p2.innerHTML = `Rotu: ${dog.breed}`;
-
+      p2.innerHTML = `Rotu: ${dog.breed}`;
     const p3 = document.createElement('p');
-    p3.innerHTML = `Koko: ${dog.size}`;
-
+      p3.innerHTML = `Koko: ${dog.size}`;
     const p4 = document.createElement('p');
-    p4.innerHTML = `Kotipaikka: ${dog.location}`;
+      p4.innerHTML = `Kotipaikka: ${dog.location}`;
 
     const li = document.createElement('li');
     li.classList.add('dog-form');
@@ -54,12 +51,12 @@ const createDogCards = (dogs) => {
     li.appendChild(p2);
     li.appendChild(p3);
     li.appendChild(p4);
-    ul.appendChild(li);
+    dogList.appendChild(li);
   }
   });
 };
 
-// AJAX call
+//        AJAX call
 
 const getDog = async () => {
   console.log('getDog token ', sessionStorage.getItem('token'));
@@ -71,11 +68,6 @@ const getDog = async () => {
     };
     const response = await fetch(url + '/dog', options);
     const dogs = await response.json();
-  //  const response2 = await fetch(url + '/user', options);
-  //  const cuser = await response2.json();
- //   console.log(cuser);
-  //  currentId = cuser.userId;
-
     createDogCards(dogs);
   }
   catch (e) {
@@ -83,7 +75,8 @@ const getDog = async () => {
   }
 };
 
-// create breed options to <select>
+//        Create breed options to <select>
+
 const createBreedOptions = (breeds) => {
   breedList.forEach((list) => {
     list.innerHTML='';
@@ -96,7 +89,8 @@ const createBreedOptions = (breeds) => {
   });
 };
 
-// get breeds
+//        Get the list of breeds
+
 const getBreeds = async () => {
   try {
     const options = {
@@ -111,7 +105,8 @@ const getBreeds = async () => {
     console.log(e.message);
   }
 };
-// create location options to <select>
+//          Create location options to <select>
+
 const createLocationOptions = (locations) => {
   locationList.forEach((list) => {
     list.innerHTML='';
@@ -124,7 +119,8 @@ const createLocationOptions = (locations) => {
   });
 };
 
-//get locations
+//          Get the list of locations
+
 const getLocations = async () => {
   try {
     const options = {
@@ -140,7 +136,8 @@ const getLocations = async () => {
   }
 };
 
-// submit dog form
+//        Submit dog form
+
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const fd = new FormData(addForm);
@@ -157,22 +154,8 @@ addForm.addEventListener('submit', async (evt) => {
   getDog();
 });
 
-//Go to register form
-goToRegister.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  loginWrapper.style.display = 'none';
-  registerWrapper.style.display = 'block';
-});
+//          Login
 
-//Go to login form
-goToLogin.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  loginWrapper.style.display = 'block';
-  registerWrapper.style.display = 'none';
-});
-
-
-// login
 loginForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(loginForm);
@@ -189,22 +172,25 @@ loginForm.addEventListener('submit', async (evt) => {
   if (!json.user) {
     alert(json.message);
   } else {
+    // set current user Id
+    sessionStorage.setItem('currentUser', json.user.userId);
     // save token
     sessionStorage.setItem('token', json.token);
+    const currentId = parseInt(sessionStorage.getItem('currentUser'));
     // show/hide forms + dogs
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
-    main.style.display = 'block';
+    main.style.display = 'none';
+    postContainer.style.display = 'block';
     userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
-//    const currentId = json.user.userId;
-    sessionStorage.setItem('currentUser', json.user.userId);
     getDog();
     getBreeds();
     getLocations();
   }
 });
 
-// logout
+//        Logout
+
 logOut.addEventListener('click', async (evt) => {
   evt.preventDefault();
   try {
@@ -224,14 +210,17 @@ logOut.addEventListener('click', async (evt) => {
     loginWrapper.style.display = 'block';
     logOut.style.display = 'none';
     main.style.display = 'none';
+    postContainer.style.display = 'none';
+    ownPostContainer.style.display = 'none';
+
   }
   catch (e) {
     console.log(e.message);
   }
 });
 
+//        Submit register form
 
-// submit register form
 addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(addUserForm);
@@ -252,20 +241,24 @@ addUserForm.addEventListener('submit', async (evt) => {
   registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
   main.style.display = 'block';
+  postContainer.style.display = 'none';
   userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
   getDog();
   getBreeds();
   getLocations();
 });
 
-// when app starts, check if token exists and hide login form, show logout button and main content, get dogs and users
+//      When app starts, check if token exists and hide login form,
+//      show logout button and main content, get dogs and users
+
 if (sessionStorage.getItem('token')) {
   console.log('logged in');
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
-  main.style.display = 'block';
+  main.style.display = 'none';
+  postContainer.style.display = 'block';
   getDog();
   getBreeds();
   getLocations();
-};
+}

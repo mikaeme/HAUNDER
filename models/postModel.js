@@ -4,7 +4,12 @@ const promisePool = pool.promise();
 
 const getAllPosts = async() => {
     try {
-        const [rows] = await promisePool.execute('SELECT post.*, user.username as posterId FROM post JOIN user ON user.userId = post.posterId');
+        const [rows] = await promisePool.execute(
+            'SELECT post.*, user.username as "posterDog", ' +
+            'location.location as "location" ' +
+            'FROM post JOIN user ON user.userId = post.posterId ' +
+            'JOIN location ON post.locationId = location.locationId ' +
+            'ORDER BY postId DESC;');
         return rows;
     } catch (e) {
         console.log('error', e.message);
@@ -12,11 +17,11 @@ const getAllPosts = async() => {
     }
 };
 
-const getPost = async(params) => {
+const getPost = async(id) => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT * FROM post WHERE Id = ?;',
-            params,
+            'SELECT * FROM post WHERE postId = ?;',
+            [id],
         );
         return rows;
     } catch (e) {
@@ -28,7 +33,7 @@ const getPost = async(params) => {
 const addPost = async(params) => {
     try {
         const [rows] = await promisePool.execute(
-            'INSERT INTO post (posterId, pic, timestamp, title, text, locationId) VALUES (?, ?, ?, ?, ?, ?);',
+            'INSERT INTO post (timestamp, posterId, pic, title, text, locationId) VALUES (CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?);',
             params,
         );
         return rows;
@@ -41,7 +46,7 @@ const addPost = async(params) => {
 const updatePost = async(params) => {
     try {
         const [rows] = await promisePool.execute(
-            'UPDATE post SET posterId = ?, pic = ?, timestamp = ?, title = ?, text = ?, locationId = ? WHERE postId = ?;',
+            'UPDATE post SET title = ?, text = ?, locationId = ? WHERE postId = ?;',
             params);
         return rows;
     } catch (e) {

@@ -1,17 +1,22 @@
 'use strict';
 const postModel = require('../models/postModel');
 
-
-const post_list_get = async(req, res) => {
+const post_list_get = async (req, res) => {
     const posts = await postModel.getAllPosts();
     await res.json(posts);
 };
 
+const post_get = async (req, res) => {
+    console.log('??');
+    const post = await postModel.getPost(req.params.id);
+    await res.json(post[0]);
+};
+
 const create_post = async(req, res) => {
+    console.log(req)
     const params = [
         req.body.posterId,
-        req.file,
-        req.body.timestamp,
+        req.file.filename,
         req.body.title,
         req.body.text,
         req.body.locationId,
@@ -20,20 +25,12 @@ const create_post = async(req, res) => {
     await res.json(response);
 };
 
-const post_get = async(req, res) => {
-    const params = [req.params.id];
-    const post = await postModel.getPost(params);
-    await res.json(post[0]);
-};
-
 const post_update_put = async(req, res) => {
     const params = [
-        //req.body.userId,
-        req.file,
-        //req.body.timestamp,
         req.body.title,
         req.body.text,
-        //req.body.wallUserId,
+        req.body.locationId,
+        req.body.postId,
     ];
     console.log('update', params);
     const user = await postModel.updatePost(params);
@@ -52,5 +49,5 @@ module.exports = {
     create_post,
     post_get,
     post_update_put,
-    post_delete,
+//    post_delete,
 };
