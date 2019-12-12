@@ -186,7 +186,6 @@ loginForm.addEventListener('submit', async (evt) => {
     getDog();
     getBreeds();
     getLocations();
-    getOwnPosts();
   }
 });
 

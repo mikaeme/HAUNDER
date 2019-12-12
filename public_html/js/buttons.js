@@ -3,7 +3,7 @@ const goToUser = document.querySelector('.go-to-user');
 const goToOwnPosts = document.querySelector('.go-to-own-posts');
 const goToRegister = document.querySelector('.go-to-reg');
 const goToLogin = document.querySelector('.go-to-login');
-const goToPosts = document.querySelector('.go-to-posts');
+const goToPosts = document.querySelectorAll('.go-to-posts');
 
 //          Go to user info view
 
@@ -23,7 +23,6 @@ goToOwnPosts.addEventListener('click', async (evt) => {
   main.style.display = 'none';
   postContainer.style.display = 'none';
   ownPostContainer.style.display = 'block';
-  getOwnPosts();
 });
 //          Go to register form
 
@@ -42,13 +41,15 @@ goToLogin.addEventListener('click', async (evt) => {
   postContainer.style.display = 'none';
 });
 //          Go to feed view
-
-goToPosts.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  loginWrapper.style.display = 'none';
-  registerWrapper.style.display = 'none';
-  main.style.display = 'none';
-  ownPostContainer.style.display = 'none';
-  postContainer.style.display = 'block';
-  logOut.style.display = 'block';
+goToPosts.forEach((nappi) => {
+  nappi.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    console.log('??');
+    loginWrapper.style.display = 'none';
+    registerWrapper.style.display = 'none';
+    main.style.display = 'none';
+    ownPostContainer.style.display = 'none';
+    postContainer.style.display = 'block';
+    logOut.style.display = 'block';
+  });
 });

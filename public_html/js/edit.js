@@ -7,6 +7,7 @@ const editForm = document.querySelector('#edit-post-form');
 
 const createOwnPosts = (posts) => {
   const currentId = parseInt(sessionStorage.getItem('currentUser'));
+  console.log(currentId);
   ownPosts.innerHTML = '';
   posts.forEach((post) => {
     //show only current user´s dogs
@@ -33,16 +34,15 @@ const createOwnPosts = (posts) => {
       const p4 = document.createElement('p');
       p4.innerHTML = post.text;
 
-      const editButton = document.createElement('button');
-      editButton.innerHTML = 'Edit';
-      editButton.addEventListener('click', () => {
-//        editWrapper.style.display = 'block';
-        console.log('??');
+      edit.innerHTML = 'Edit';
+      edit.addEventListener('click', () => {
+        console.log('???');
+/*        editWrapper.style.display = 'block';
         const inputs = editForm.querySelectorAll('input');
         inputs[0].value = post.pic;
         inputs[1].value = post.title;
         inputs[2].value = post.text;
-        editForm.querySelector('select').value = locationId;
+        editForm.querySelector('select').value = locationId;*/
       });
 
       const li = document.createElement('li');
