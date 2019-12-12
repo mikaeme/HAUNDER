@@ -15,6 +15,8 @@ const comment_get = async (req, res) => {
 const create_comment = async(req, res) => {
   console.log(req);
   const params = [
+      req.body.postId,
+    req.body.commenterId,
     req.body.text,
   ];
   console.log(params);

@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllComments = async() => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT comment.*, user.username as "commenterId", ' +
+        'SELECT comment.*, user.username as "commenterId" ' +
         'FROM comment JOIN user ON user.userId = comment.commenterId ' +
         'ORDER BY commentId DESC;');
     return rows;
@@ -31,7 +31,7 @@ const getComment = async(id) => {
 const addComment = async(params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO comment (timestamp,  text) VALUES (CURRENT_TIMESTAMP(),  ?);',
+        'INSERT INTO comment (timestamp, postId, commenterId, text) VALUES (CURRENT_TIMESTAMP(),?, ?, ?);',
         params,
     );
     return rows;

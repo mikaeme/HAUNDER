@@ -1,8 +1,6 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
 const commentController = require('../controllers/commentController');
 
 
@@ -15,8 +13,6 @@ router.post('/', commentController.create_comment);
 // req.file is the `avatar` file
 // req.body will hold the text fields, if there were any
 //})
-
-
 router.put('/', commentController.comment_update_put);
 
 //router.delete('/:id', postController.post_delete);

@@ -2,6 +2,7 @@
 
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
+const ownDogList = document.querySelectorAll("#own-dog-list");
 
 //        Create breed options to <select>
 
@@ -63,5 +64,40 @@ const getLocations = async () => {
     console.log(e.message);
   }
 };
+
+//          Create location options to <select>
+
+const createOwnDogOptions = (dogs) => {
+  const currentId = parseInt(sessionStorage.getItem('currentUser'));
+  ownDogList.forEach((list) => {
+    list.innerHTML='';
+    dogs.forEach((dog) => {
+      if (dog.ownerId === currentId) {
+        const option = document.createElement('option');
+        option.value = dog.name;
+        option.innerHTML = dog.name;
+        list.appendChild(option);
+      }
+    });
+  });
+};
+
+//          Get the list of locations
+
+const getOwnDogs = async () => {
+  try {
+    const options = {
+      headers: {
+        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+      },
+    };
+    const response = await fetch(url + '/dog', options);
+    const dogs = await response.json();
+    createOwnDogOptions(dogs);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 getBreeds();
 getLocations();
+getOwnDogs();

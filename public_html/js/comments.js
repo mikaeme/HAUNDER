@@ -48,11 +48,13 @@ addComment.addEventListener('submit', async(evt) => {
   const pdd = serializeJson(addComment);
   // set current user as the commenter
   const currentId = parseInt(sessionStorage.getItem('currentUser'));
-  //pdd.commenterId = currentId;
+  pdd.posterId = '57';
+  pdd.commenterId = currentId;
   const fetchOptions = {
     method: 'POST',
     body: JSON.stringify(pdd),
   };
+  console.log(pdd);
   const response = await fetch(url + '/commenting', fetchOptions);
   const json = await response.json();
   console.log('add response', json);

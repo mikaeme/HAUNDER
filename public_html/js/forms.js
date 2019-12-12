@@ -1,5 +1,7 @@
 'use strict';
-const url = 'http://localhost:3000';
+//const url = 'http://localhost:3000';
+const url ='http://10.114.34.105/node';
+//const url ='https://10.114.34.105/node';
 
 const loginWrapper = document.querySelector('#login-wrapper');
 const registerWrapper = document.querySelector('#register-wrapper');

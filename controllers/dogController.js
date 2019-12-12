@@ -1,7 +1,7 @@
 'use strict';
 const {validationResult} = require('express-validator');
 const dogModel = require('../models/dogModel');
-const userModel = require('../models/UserModel');
+const userModel = require('../models/userModel');
 const resize = require('../utils/resize');
 const imageMeta = require('../utils/imageMeta');
 
