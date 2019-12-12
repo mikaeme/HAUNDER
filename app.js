@@ -9,6 +9,7 @@ const authRoute = require('./routers/authRoute');
 const formRoute = require('./routers/formRoute');
 const userRoute = require('./routers/userRoute');
 const postRoute = require('./routers/postRoute');
+const commentRoute = require('./routers/commentRoute');
 
 app.use(express.static('uploads'));
 app.use('/thumbnails', express.static('thumbnails'));
@@ -24,5 +25,6 @@ app.use('/dog', dogRoute);
 app.use('/auth', authRoute);
 app.use('/form', formRoute);
 app.use('/posting', postRoute);
+app.use('/commenting', commentRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
