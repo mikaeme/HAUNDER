@@ -137,6 +137,25 @@
             <button class ="go-to-own-posts" type="button">Omat viestini</button>
         </div>
     </div>
+    
+     <!--------------------- COMMENT VIEW -------------------------->
+ <div class="feed">
+     <div class="own-comment-container" style="display: none;">
+         <div class="addpost">
+             <div class="comment-wrapper">
+                 <h3>Lisää kommentti</h3>
+                 <form class="light-border" enctype="multipart/form-data" id="addCommentForm">
+                     <textarea rows="4" cols="60" class="light-border" type="text" name="text" placeholder="kommentti" required></textarea>
+                     <button class="light-border" type="submit">Lisää</button>
+                 </form>
+             </div>
+         </div>
+         <div class="postcard">
+             <ul id="timeline1"></ul>
+         </div>
+         <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
+     </div>
+ </div>
  <!--------------------- EDIT OWN POSTS ------------------------>
 
      <div class="feed">
@@ -177,5 +196,6 @@
 <script src="./js/edit.js"></script>
 <script src="js/serialize.js"></script>
 <script src="js/moment.locales.js"></script>
+<script src="js/comments.js"></script>
 </body>
 </html>

@@ -17,6 +17,12 @@ const createPostCards = (posts) => {
         img.alt = post.title;
         img.classList.add('resp');
         
+        //Comment button
+        const edit = document.createElement('button');
+        edit.innerHTML = `Kommentoi`;
+        edit.classList.add('edit-post');
+        edit.setAttribute("id", `${post.postId}`);
+        
         let date = moment(post.timestamp).locale('fi').format('LLL');
 
         const figure = document.createElement('figure').appendChild(img);
@@ -31,6 +37,11 @@ const createPostCards = (posts) => {
             p3.innerHTML = `Location: ${post.location}`;
         const p4 = document.createElement('p');
             p4.innerHTML = post.text;
+        
+        edit.addEventListener('click', () => {
+            ownCommentContainer.style.display = 'block';
+            postContainer.style.display = 'none';
+        });
 
         const li = document.createElement('li');
 
@@ -40,6 +51,7 @@ const createPostCards = (posts) => {
         li.appendChild(p2);
         li.appendChild(p3);
         li.appendChild(p4);
+        li.appendChild(edit);
         timeLine.appendChild(li);
 
       /*  // add selected cat's values to modify form
