@@ -36,7 +36,7 @@ const dog_create_post = async (req, res) => {
      //create thumbnail
       const thumb = await resize.makeThumbnail(req.file.path,
           'thumbnails/' + req.file.filename,
-          {width: 160, height: 160});
+          {width: 80, height: 80});
       console.log('thumb', thumb);
 
       // get coordinates

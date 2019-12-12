@@ -34,7 +34,6 @@ const createOwnPosts = (posts) => {
       const p4 = document.createElement('p');
       p4.innerHTML = post.text;
 
-      edit.innerHTML = 'Edit';
       edit.addEventListener('click', () => {
         editWrapper.style.display = 'block';
         ownPosts.style.display = 'none';
@@ -82,17 +81,11 @@ editForm.addEventListener('submit', async(evt) => {
   ownPosts.style.display = 'block';
     const data = serializeJson(editForm);
     const fetchOptions = {
-        method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            // 'Content-Type': 'application/x-www-form-urlencoded',
         },
-        redirect: 'follow', // manual, *follow, error
-        referrer: 'no-referrer', // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
+        body: JSON.stringify(data),
     };
 
     console.log(fetchOptions);

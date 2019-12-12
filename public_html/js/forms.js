@@ -10,8 +10,6 @@ const main = document.querySelector('main');
 const loginForm = document.querySelector('#login-form');
 const dogList = document.querySelector('#dog-list');
 const addUserForm = document.querySelector('#add-user-form');
-const breedList = document.querySelectorAll('.add-breed');
-const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
 
 //            Create dog cards
@@ -24,35 +22,35 @@ const createDogCards = (dogs) => {
   dogs.forEach((dog) => {
     //show only current user´s dogs
     if(dog.ownerId === currentId){
-    const img = document.createElement('img');
-    img.src = url + '/thumbnails/' + dog.profilePic;
-    img.alt = dog.name;
-    img.classList.add('resp');
+      const img = document.createElement('img');
+      img.src = url + '/thumbnails/' + dog.profilePic;
+      img.alt = dog.name;
+      img.classList.add('resp');
 
-    const figure = document.createElement('figure').appendChild(img);
+      const figure = document.createElement('figure').appendChild(img);
 
-    const h2 = document.createElement('h2');
+      const h2 = document.createElement('h2');
       h2.innerHTML = dog.name;
-    const p1 = document.createElement('p');
+      const p1 = document.createElement('p');
       p1.innerHTML = `Sukupuoli: ${dog.gender}`;
-    const p2 = document.createElement('p');
+      const p2 = document.createElement('p');
       p2.innerHTML = `Rotu: ${dog.breed}`;
-    const p3 = document.createElement('p');
+      const p3 = document.createElement('p');
       p3.innerHTML = `Koko: ${dog.size}`;
-    const p4 = document.createElement('p');
+      const p4 = document.createElement('p');
       p4.innerHTML = `Kotipaikka: ${dog.location}`;
 
-    const li = document.createElement('li');
-    li.classList.add('dog-form');
+      const li = document.createElement('li');
+      li.classList.add('dog-form');
 
-    li.appendChild(h2);
-    li.appendChild(figure);
-    li.appendChild(p1);
-    li.appendChild(p2);
-    li.appendChild(p3);
-    li.appendChild(p4);
-    dogList.appendChild(li);
-  }
+      li.appendChild(h2);
+      li.appendChild(figure);
+      li.appendChild(p1);
+      li.appendChild(p2);
+      li.appendChild(p3);
+      li.appendChild(p4);
+      dogList.appendChild(li);
+    }
   });
 };
 
@@ -71,67 +69,6 @@ const getDog = async () => {
     createDogCards(dogs);
   }
   catch (e) {
-    console.log(e.message);
-  }
-};
-
-//        Create breed options to <select>
-
-const createBreedOptions = (breeds) => {
-  breedList.forEach((list) => {
-    list.innerHTML='';
-    breeds.forEach((breed) => {
-      const option = document.createElement('option');
-      option.value = breed.breedId;
-      option.innerHTML = breed.breed;
-      list.appendChild(option);
-    });
-  });
-};
-
-//        Get the list of breeds
-
-const getBreeds = async () => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/form/breeds', options);
-    const breeds = await response.json();
-    createBreedOptions(breeds);
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-//          Create location options to <select>
-
-const createLocationOptions = (locations) => {
-  locationList.forEach((list) => {
-    list.innerHTML='';
-    locations.forEach((location) => {
-      const option = document.createElement('option');
-      option.value = location.locationId;
-      option.innerHTML = location.location;
-      list.appendChild(option);
-    });
-  });
-};
-
-//          Get the list of locations
-
-const getLocations = async () => {
-  try {
-    const options = {
-      headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-      },
-    };
-    const response = await fetch(url + '/form/locations', options);
-    const locations = await response.json();
-    createLocationOptions(locations);
-  } catch (e) {
     console.log(e.message);
   }
 };

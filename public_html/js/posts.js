@@ -41,48 +41,6 @@ const createPostCards = (posts) => {
         li.appendChild(p3);
         li.appendChild(p4);
         timeLine.appendChild(li);
-
-      /*  // add selected cat's values to modify form
-        const modButton = document.createElement('button');
-        modButton.innerHTML = 'Modify';
-        modButton.addEventListener('click', () => {
-            const inputs = modForm.querySelectorAll('input');
-            inputs[0].value = post.ownerId;
-            inputs[1].value = post.date;
-            inputs[2].value = post.title;
-            inputs[3].value = post.text;
-            inputs[3].value = post.wallOwnerId;
-            modForm.querySelector('select').value = post.ownerId;
-        });
-
-        // delete selected cat
-        const delButton = document.createElement('button');
-        delButton.innerHTML = 'Delete';
-        delButton.addEventListener('click', async() => {
-            const fetchOptions = {
-                method: 'DELETE',
-            };
-            try {
-                const response = await fetch(url + '/post/' + post.post_id, fetchOptions);
-                const json = await response.json();
-                console.log('delete response', json);
-                gePost();
-            } catch (e) {
-                console.log(e.message());
-            }
-        });
-
-        const li = document.createElement('li');
-        li.classList.add('light-border');
-
-        li.appendChild(h2);
-        li.appendChild(figure);
-        li.appendChild(p1);
-        li.appendChild(p2);
-        li.appendChild(p3);
-        li.appendChild(p4);
-        li.appendChild(p5);
-        ul.appendChild(li);*/
     });
 };
 

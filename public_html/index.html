@@ -108,7 +108,7 @@
                        name="dog"
                        accept="image/*"
                        placeholder="Choose file">
-                <button id="upload-button" type="submit">Upload</button>
+                <button id="upload-button" type="submit">Tallenna</button>
             </form>
             <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
         </div>
@@ -122,11 +122,12 @@
                     <h3>Add post</h3>
                     <form class="light-border" enctype="multipart/form-data" id="addPostForm">
                         <input class="light-border" type="file" name="pic" placeholder="Choose file">
-                        <input class="light-border" type="text" name="title" placeholder="title" required>
+                        <select class="light-border" id="own-dog-list" name="title">
+                            <option value="">Mainitse koira</option></select>
                         <input class="light-border" type="text" name="text" placeholder="text" required>
                         <select class="add-location" name="locationId">
                             <option value="">Valitse sijainti</option></select>
-                        <button class="light-border" type="submit">Upload</button>
+                        <button class="light-border" type="submit">Lähetä</button>
                     </form>
                 </div>
             </div>
@@ -171,6 +172,7 @@
 
 
 <script src="js/forms.js"></script>
+ <script src="js/lists.js"></script>
 <script src="./js/posts.js"></script>
  <script src="./js/buttons.js"></script>
 <script src="./js/edit.js"></script>
