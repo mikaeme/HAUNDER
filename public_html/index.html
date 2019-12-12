@@ -11,24 +11,30 @@
 <body>
 
  <!----------- TOP NAV ------------>
+    
+    
+    <div class="topnav">
+        <button class="go-to-posts">
+            <a href> <img class="logo" src="./images/whitelogo.png" height="50px" width="130px"></a></button>
 
- <div class="topnav">
-     <a href="#home"><img class="topnav_logo" src="./images/whitelogo.png" heigth="90px" width="130px" /></a>
+        <!------------ HAMBURGER MENU / CONTROL PANEL / SEARCH ------------------->
 
-     <!-- Navigation links (hidden by default) -->
-     <div id="myLinks">
-         <a href="#news">Control panel</a>
-         <a href="#contact">Friends</a>
-         <a href="#about">Settings</a>
-     </div>
-     <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-         <span class="entypo-search"></span></a>
-     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-         <span class="entypo-cog"></span></a>
-     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-         <span class="fa fa-bars"></span></a>
- </div>
+        <button class="go-to-user icon">
+           <span class="entypo-cog"></span></button>
+
+        <button class="go-to-search icon">
+            <span class="entypo-search"></span></button>
+
+        <button class="hamburger">
+            <span class="entypo-menu"></span></button>
+        <div id="menu" class="menu-content">
+            <ul>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
+            </ul>
+        </div>
+    </div>
 
 <!------------ LOGIN FORM ------------------->
 
