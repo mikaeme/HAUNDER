@@ -27,11 +27,10 @@ const create_post = async(req, res) => {
 
 const post_update_put = async(req, res) => {
     const params = [
-        req.file,
         req.body.title,
         req.body.text,
         req.body.locationId,
-        req.body.posterId,
+        req.body.postId,
     ];
     console.log('update', params);
     const user = await postModel.updatePost(params);

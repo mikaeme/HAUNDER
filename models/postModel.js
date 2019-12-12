@@ -46,7 +46,7 @@ const addPost = async(params) => {
 const updatePost = async(params) => {
     try {
         const [rows] = await promisePool.execute(
-            'UPDATE post SET pic = ?, title = ?, text = ?, locationId = ? WHERE postId = ?;',
+            'UPDATE post SET title = ?, text = ?, locationId = ? WHERE postId = ?;',
             params);
         return rows;
     } catch (e) {

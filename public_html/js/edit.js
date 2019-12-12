@@ -37,12 +37,14 @@ const createOwnPosts = (posts) => {
       edit.innerHTML = 'Edit';
       edit.addEventListener('click', () => {
         console.log('???');
-/*        editWrapper.style.display = 'block';
+        editWrapper.style.display = 'block';
         const inputs = editForm.querySelectorAll('input');
-        inputs[0].value = post.pic;
-        inputs[1].value = post.title;
-        inputs[2].value = post.text;
-        editForm.querySelector('select').value = locationId;*/
+ //       inputs[0].value = post.posterDog;
+        inputs[0].value = post.title;
+        inputs[1].value = post.text;
+        inputs[2].value = post.postId;
+        editForm.querySelector('select').value = post.locationId;
+        console.log(editForm);
       });
 
       const li = document.createElement('li');
@@ -73,10 +75,10 @@ const getOwnPosts = async () => {
 getOwnPosts();
 
 
-/*// submit modify form
+// submit modify form
 editForm.addEventListener('submit', async(evt) => {
     evt.preventDefault();
-    const data = serializeJson(modForm);
+    const data = serializeJson(editForm);
     const fetchOptions = {
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -92,8 +94,8 @@ editForm.addEventListener('submit', async(evt) => {
     };
 
     console.log(fetchOptions);
-    const response = await fetch(url + '/post', fetchOptions);
+    const response = await fetch(url + '/posting', fetchOptions);
     const json = await response.json();
     console.log('modify response', json);
     getPost();
-});*/
+});

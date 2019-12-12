@@ -40,6 +40,7 @@ goToLogin.addEventListener('click', async (evt) => {
   registerWrapper.style.display = 'none';
   postContainer.style.display = 'none';
 });
+
 //          Go to feed view
 goToPosts.forEach((nappi) => {
   nappi.addEventListener('click', async (evt) => {
