@@ -17,7 +17,7 @@ router.post('/', upload.single('pic'), postController.create_post);
 //})
 
 
-//router.put('/', postController.post_update_put);
+router.put('/', postController.post_update_put);
 
 //router.delete('/:id', postController.post_delete);
 

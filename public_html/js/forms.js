@@ -13,9 +13,6 @@ const addUserForm = document.querySelector('#add-user-form');
 const breedList = document.querySelectorAll('.add-breed');
 const locationList = document.querySelectorAll('.add-location');
 const addForm = document.querySelector('#add-dog-form');
-const goToRegister = document.querySelector('#go-to-reg');
-const goToLogin = document.querySelector('#go-to-login');
-const goToPosts = document.querySelector('#go-to-posts');
 
 //            Create dog cards
 
@@ -157,36 +154,6 @@ addForm.addEventListener('submit', async (evt) => {
   getDog();
 });
 
-//          Go to register form
-
-goToRegister.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  loginWrapper.style.display = 'none';
-  registerWrapper.style.display = 'block';
-  postContainer.style.display = 'none';
-});
-
-//          Go to login form
-
-goToLogin.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  loginWrapper.style.display = 'block';
-  registerWrapper.style.display = 'none';
-  postContainer.style.display = 'none';
-});
-
-//          Go to main view
-
-goToPosts.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  loginWrapper.style.display = 'none';
-  registerWrapper.style.display = 'none';
-  main.style.display = 'none';
-  postContainer.style.display = 'block';
-  logOut.style.display = 'block';
-
-});
-
 //          Login
 
 loginForm.addEventListener('submit', async (evt) => {
@@ -205,19 +172,21 @@ loginForm.addEventListener('submit', async (evt) => {
   if (!json.user) {
     alert(json.message);
   } else {
+    // set current user Id
+    sessionStorage.setItem('currentUser', json.user.userId);
     // save token
     sessionStorage.setItem('token', json.token);
+    const currentId = parseInt(sessionStorage.getItem('currentUser'));
     // show/hide forms + dogs
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
     main.style.display = 'none';
     postContainer.style.display = 'block';
     userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
-//    const currentId = json.user.userId;
-    sessionStorage.setItem('currentUser', json.user.userId);
     getDog();
     getBreeds();
     getLocations();
+    getOwnPosts();
   }
 });
 
@@ -243,6 +212,7 @@ logOut.addEventListener('click', async (evt) => {
     logOut.style.display = 'none';
     main.style.display = 'none';
     postContainer.style.display = 'none';
+    ownPostContainer.style.display = 'none';
 
   }
   catch (e) {

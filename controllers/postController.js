@@ -24,15 +24,14 @@ const create_post = async(req, res) => {
     const response = await postModel.addPost(params);
     await res.json(response);
 };
-/*
+
 const post_update_put = async(req, res) => {
     const params = [
-        //req.body.userId,
         req.file,
-        //req.body.timestamp,
         req.body.title,
         req.body.text,
-        //req.body.wallUserId,
+        req.body.locationId,
+        req.body.posterId,
     ];
     console.log('update', params);
     const user = await postModel.updatePost(params);
@@ -45,11 +44,11 @@ const post_delete = async(req, res) => {
     const post = await postModel.deletePost(params);
     await res.json(post);
 };
-*/
+
 module.exports = {
     post_list_get,
     create_post,
     post_get,
-//    post_update_put,
+    post_update_put,
 //    post_delete,
 };

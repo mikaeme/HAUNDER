@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>HAUNDR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href="css/style4.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/favicon/favicon.png" type="image/png">
@@ -50,7 +50,7 @@
                 </div>
             </form>
         </div>
-        <button id ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
+        <button class ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
     </div>
 
     <!-------------- REGISTER FORM -------------->
@@ -69,7 +69,7 @@
                        placeholder="Salasana" required>
                 <button id="register-button" type="submit">Tallenna</button>
             </form>
-            <button id ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
+            <button class ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
         </div>
     </div>
 </div>
@@ -110,7 +110,7 @@
                        placeholder="Choose file">
                 <button id="upload-button" type="submit">Upload</button>
             </form>
-            <button id ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
+            <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
         </div>
     </main>
 
@@ -133,9 +133,34 @@
             <div class="postcard">
                 <ul id="timeline"></ul>
             </div>
-            <button id ="go-to-user" type="button">Omat tiedot</button>
+            <button class ="go-to-user" type="button">Omat tietoni</button>
+            <button class ="go-to-own-posts" type="button">Omat viestini</button>
         </div>
     </div>
+ <!--------------------- EDIT OWN POSTS ------------------------>
+
+     <div class="feed">
+         <div class="own-post-container" style="display: none;">
+             <div class="editpost">
+                 <div class="edit-wrapper">
+                     <h3>Muokkaa viestejä</h3>
+                     <form class="light-border" enctype="multipart/form-data" id="edit-post-form">
+                         <input class="light-border" type="file" name="pic" placeholder="Choose file">
+                         <input class="light-border" type="text" name="title" placeholder="title" required>
+                         <input class="light-border" type="text" name="text" placeholder="text" required>
+                         <select class="add-location" name="locationId">
+                             <option value="">Valitse sijainti</option></select>
+                         <button class="light-border" type="submit">Tallenna</button>
+                     </form>
+                 </div>
+             </div>
+             <div class="postcard">
+                 <ul id="own-posts"></ul>
+             </div>
+             <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
+         </div>
+     </div>
+
     <!--------------------- LOG OUT BUTTON ------------------------>
 
     <footer id="log-out" style="display: none;">
@@ -143,8 +168,11 @@
         <button class="user-form">Kirjaudu ulos</button>
     </footer>
 
+
 <script src="js/forms.js"></script>
 <script src="./js/posts.js"></script>
+ <script src="./js/buttons.js"></script>
+<!-- <script src="./js/edit.js"></script>-->
 <script src="js/serialize.js"></script>
 </body>
 </html>
