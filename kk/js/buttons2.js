@@ -1,9 +1,9 @@
 'use strict';
-const goToUser = document.querySelector('.entypo-cog');
-const goToOwnPosts = document.querySelector('.entypo-search');
+const goToUser = document.querySelector('.go-to-user');
+const goToOwnPosts = document.querySelector('.go-to-own-posts');
 const goToRegister = document.querySelector('.go-to-reg');
 const goToLogin = document.querySelector('.go-to-login');
-const goToPosts = document.querySelectorAll('.topnav_logo');
+const goToPosts = document.querySelectorAll('.go-to-posts');
 
 //          Go to user info view
 
@@ -29,14 +29,14 @@ goToOwnPosts.addEventListener('click', async (evt) => {
 goToRegister.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'none';
-  registerWrapper.style.display = 'flex';
+  registerWrapper.style.display = 'block';
   postContainer.style.display = 'none';
 });
 //          Go to login form
 
 goToLogin.addEventListener('click', async (evt) => {
   evt.preventDefault();
-  loginWrapper.style.display = 'flex';
+  loginWrapper.style.display = 'block';
   registerWrapper.style.display = 'none';
   postContainer.style.display = 'none';
 });
