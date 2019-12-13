@@ -75,7 +75,6 @@ const getDog = async () => {
   }
 };
 
-
 //        Submit dog form
 
 addForm.addEventListener('submit', async (evt) => {
@@ -118,14 +117,12 @@ loginForm.addEventListener('submit', async (evt) => {
     sessionStorage.setItem('token', json.token);
     const currentId = parseInt(sessionStorage.getItem('currentUser'));
     // show/hide forms + dogs
-            topnav.style.display = 'block';
-        loginWrapper.style.display = 'none';
-        logOut.style.display = 'block';
-        main.style.display = 'none';
-        postContainer.style.display = 'block';
-        userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
-    
-    
+    topnav.style.display = 'block';
+    loginWrapper.style.display = 'none';
+    logOut.style.display = 'block';
+    main.style.display = 'none';
+    postContainer.style.display = 'block';
+    userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
     getDog();
     getBreeds();
     getLocations();
@@ -158,8 +155,6 @@ logOut.addEventListener('click', async (evt) => {
     ownCommentContainer.style.display = 'none';
     logincontainer.style.display = 'block';
     topnav.style.display = 'none';
-
-
   }
   catch (e) {
     console.log(e.message);
@@ -207,8 +202,6 @@ if (sessionStorage.getItem('token')) {
   postContainer.style.display = 'block';
   topnav.style.display = 'block';
   logincontainer.style.display = 'none';
-  
-  
   getDog();
   getBreeds();
   getLocations();
