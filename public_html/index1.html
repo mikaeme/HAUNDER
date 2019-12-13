@@ -12,51 +12,56 @@
 
 <!----------- TOP NAV ------------>
 
-
-<div class="topnav">
-    <button class="go-to-posts">
-        <a href> <img class="logo" src="./images/whitelogo.png" height="50px" width="130px"></a></button>
+    <div class="topnav" id="topnav" style="display: none;">
+        <button class="go-to-posts">
+            <a href> <img class="topnavlogo" src="./images/whitelogo.png" height="50px" width="130px"></a>
+        </button>
 
     <!------------ HAMBURGER MENU / CONTROL PANEL / SEARCH ------------------->
 
-    <button class="go-to-user icon">
-        <span class="entypo-cog"></span></button>
+        <button class="go-to-user icon">
+            <span class="entypo-cog"></span>
+        </button>
 
-    <button class="go-to-search icon">
-        <span class="entypo-search"></span></button>
+        <button class="go-to-search icon">
+            <span class="entypo-search"></span>
+        </button>
 
-    <button class="hamburger">
-        <span class="entypo-menu"></span></button>
-    <div id="menu" class="menu-content">
-        <ul>
-            <li><a href="#">Logo</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Home</a></li>
-        </ul>
+        <button class="hamburger">
+            <span class="entypo-menu"></span>
+        </button>
+        <div id="menu" class="menu-content">
+            <ul>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Home</a></li>
+            </ul>
+        </div>
     </div>
-</div>
 
 <!------------ LOGIN FORM ------------------->
+    
+    <div class="container" id="logincontainer">
+        <img class="logo" src="./images/logologin.png">
+        <h1 class="accountsTitle">Kirjaudu sisään</h1>
 
-<div class="container">
-    <div class="forms" id="login-wrapper">
-        <div class="form-wrapper">
-            <h3>Kirjaudu sisään</h3>
-            <form id="login-form" class="user-form">
-                <div>
-                    <label>Käyttäjätunnus:</label>
-                    <input class="user-form" type="text" name="username"/>
-                </div>
-                <div>
-                    <label>Salasana:</label>
-                    <input class="user-form" type="password" name="password"/>
-                </div>
-                <div>
-                    <button id="login-button" type="submit">Log In</button>
-                </div>
+        <div class="forms" id="login-wrapper">
+            <div class="form-wrapper">
+                <form id="login-form" class="user-form">
+                    <div class="user-form-field">
+                        <label class="control-label">Käyttäjätunnus</label>
+                        <input class="user-form" type="text" name="username">
+                        <br>
+                        <label class="control-label">Salasana</label>
+                        <br>
+                        <input class="user-form" type="password" name="password" />
+                    </div>
+                    <button class="form_button" id="login-button" type="submit">Log In</button>
+            </div>
             </form>
         </div>
-        <button class ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
+        <button class="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
+    </div>
     </div>
 
     <!-------------- REGISTER FORM -------------->
@@ -121,30 +126,31 @@
 </main>
 
 <!--------------------- MAIN VIEW ------------------------>
-<div class="feed">
-    <div class="postcontainer" style="display: none;">
-        <div class="addpost">
-            <div class="form-wrapper">
-                <h3>Add post</h3>
-                <form class="light-border" enctype="multipart/form-data" id="addPostForm">
-                    <input class="light-border" type="file" name="pic" placeholder="Choose file">
-                    <input class="light-border" type="text" name="title" placeholder="title" required>
-                    <input class="light-border" type="text" name="text" placeholder="text" required>
-                    <select class="add-location" name="locationId">
-                        <option value="">Valitse sijainti</option></select>
-                    <button class="light-border" type="submit">Upload</button>
-                </form>
+    <div class="feed">
+        <div class="postcontainer" style="display: none;">
+            <div class="addpost">
+                <div class="form-wrapper">
+                    <h3>Add post</h3>
+                    <form class="light-border" enctype="multipart/form-data" id="addPostForm">
+                        <input class="light-border" type="file" name="pic" placeholder="Choose file">
+                        <input class="light-border" type="text" name="title" placeholder="title" required>
+                        <input class="light-border" type="text" name="text" placeholder="text" required>
+                        <select class="add-location" name="locationId">
+                            <option value="">Valitse sijainti</option></select>
+                        <button class="light-border" type="submit">Upload</button>
+                    </form>
+                </div>
             </div>
+            <div class="postcard">
+                <ul id="timeline"></ul>
+            </div>
+            <button class ="go-to-user" type="button">Omat tietoni</button>
+            <button class ="go-to-own-posts" type="button">Omat viestini</button>
         </div>
-        <div class="postcard">
-            <ul id="timeline"></ul>
-        </div>
-        <button class ="go-to-user" type="button">Omat tietoni</button>
-        <button class ="go-to-own-posts" type="button">Omat viestini</button>
     </div>
-</div>
 
 <!--------------------- COMMENT VIEW -------------------------->
+
 <div class="feed">
     <div class="own-comment-container" style="display: none;">
         <div class="addpost">
@@ -162,6 +168,7 @@
         <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
     </div>
 </div>
+
 <!--------------------- EDIT OWN POSTS ------------------------>
 
 <div class="feed">
