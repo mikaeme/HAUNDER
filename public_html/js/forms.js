@@ -118,11 +118,14 @@ loginForm.addEventListener('submit', async (evt) => {
     sessionStorage.setItem('token', json.token);
     const currentId = parseInt(sessionStorage.getItem('currentUser'));
     // show/hide forms + dogs
-    loginWrapper.style.display = 'none';
-    logOut.style.display = 'block';
-    main.style.display = 'none';
-    postContainer.style.display = 'block';
-    userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
+            topnav.style.display = 'block';
+        loginWrapper.style.display = 'none';
+        logOut.style.display = 'block';
+        main.style.display = 'none';
+        postContainer.style.display = 'block';
+        userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
+    
+    
     getDog();
     getBreeds();
     getLocations();
@@ -153,6 +156,9 @@ logOut.addEventListener('click', async (evt) => {
     postContainer.style.display = 'none';
     ownPostContainer.style.display = 'none';
     ownCommentContainer.style.display = 'none';
+    logincontainer.style.display = 'block';
+    topnav.style.display = 'none';
+
 
   }
   catch (e) {
@@ -199,6 +205,10 @@ if (sessionStorage.getItem('token')) {
   logOut.style.display = 'block';
   main.style.display = 'none';
   postContainer.style.display = 'block';
+  topnav.style.display = 'block';
+  logincontainer.style.display = 'none';
+  
+  
   getDog();
   getBreeds();
   getLocations();
