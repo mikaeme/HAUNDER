@@ -3,7 +3,7 @@ const goToUser = document.querySelector('.entypo-cog');
 const goToOwnPosts = document.querySelector('.entypo-search');
 const goToRegister = document.querySelector('.go-to-reg');
 const goToLogin = document.querySelector('.go-to-login');
-const goToPosts = document.querySelectorAll('.topnav_logo');
+const goToPosts = document.querySelectorAll('.top-nav-logo');
 
 //          Go to user info view
 
@@ -11,7 +11,7 @@ goToUser.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
-  main.style.display = 'block';
+  userInfo.style.display = 'block';
   postContainer.style.display = 'none';
 });
 //          Go to own posts view
@@ -20,7 +20,7 @@ goToOwnPosts.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
-  main.style.display = 'none';
+  userInfo.style.display = 'none';
   postContainer.style.display = 'none';
   ownPostContainer.style.display = 'block';
 });
@@ -48,7 +48,7 @@ goToPosts.forEach((nappi) => {
     console.log('??');
     loginWrapper.style.display = 'none';
     registerWrapper.style.display = 'none';
-    main.style.display = 'none';
+    userInfo.style.display = 'none';
     ownPostContainer.style.display = 'none';
     postContainer.style.display = 'block';
     logOut.style.display = 'block';

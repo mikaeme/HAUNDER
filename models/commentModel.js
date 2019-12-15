@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllComments = async() => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT comment.*, user.username as "commenterId", ' +
+        'SELECT comment.*, user.username as "commenterId" ' +
         'FROM comment JOIN user ON user.userId = comment.commenterId ' +
         'ORDER BY commentId DESC;');
     return rows;

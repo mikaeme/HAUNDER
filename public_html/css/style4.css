@@ -296,7 +296,7 @@ a:active {
 
 /* Top navi */
 
-.topnav {
+#top-nav {
     position: relative;
     overflow: hidden;
     z-index: 2;
@@ -309,7 +309,7 @@ a:active {
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.topnav a {
+#top-nav a {
     color: white;
     background-color: transparent;
     padding: 14px 16px;
@@ -318,7 +318,7 @@ a:active {
     display: block;
 }
 
-.topnav button {
+#top-nav button {
     background-color: transparent;
     border: 0;
 }
@@ -357,7 +357,7 @@ a:active {
 
 /* Style navigation menu links */
 
-.topnav a:link,
+#top-nav a:link,
 a:visited,
 a:hover,
 a:active {
@@ -371,7 +371,7 @@ a:active {
 
 /* Topnav logo */
 
-.topnavlogo {
+.top-nav-logo {
     position: absolute;
     display: inline-block;
     top: 50%;
@@ -382,7 +382,7 @@ a:active {
 
 /* Style menu */
 
-.topnav button.hamburger {
+#top-nav button.hamburger {
     border: none;
     background-color: transparent;
     color: white;
@@ -395,7 +395,7 @@ a:active {
     transform: translate(-50%);
 }
 
-.topnav button.icon {
+#top-nav button.icon {
     border: none;
     background-color: transparent;
     color: white;

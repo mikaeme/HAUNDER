@@ -1,6 +1,6 @@
 'use strict';
 // select existing html elements
-const addPost = document.querySelector('#addPostForm');
+const addPost = document.querySelector('#add-post-form');
 const timeLine = document.querySelector('#timeline');
 const ownPostContainer = document.querySelector('.own-post-container');
 const imageModal = document.querySelector('#image-modal');

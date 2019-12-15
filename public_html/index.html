@@ -12,8 +12,8 @@
 
  <!----------- TOP NAV ------------>
 
- <div class="topnav">
-     <a href="#home"><img class="topnav_logo" src="./images/whitelogo.png" heigth="90px" width="130px" /></a>
+ <div id="top-nav">
+     <a href="#home"><img class="top-nav-logo" src="./images/whitelogo.png" heigth="90px" width="130px" /></a>
 
      <!-- Navigation links (hidden by default) -->
      <div id="myLinks">
@@ -30,8 +30,10 @@
          <span class="fa fa-bars"></span></a>
  </div>
 
- <!------------ LOGIN FORM ------------------->
  <div class="main-container">
+
+     <!------------ LOGIN FORM ------------------->
+
      <div class="forms" id="login-wrapper">
          <h3>Kirjaudu sisään</h3>
          <form id="login-form" class="user-form">
@@ -69,7 +71,7 @@
     </div>
     <!-------------- USER HOMEPAGE -------------->
 
-    <main style="display: none">
+    <main id="user-info" style="display: none">
         <h1>Koirasi</h1>
         <ul id="dog-list">
 
@@ -107,32 +109,29 @@
     </main>
 
     <!--------------------- MAIN VIEW ------------------------>
-    <div class="feed">
-        <div class="postcontainer" style="display: none;">
-            <div class="addpost">
 
-                    <h3>Add post</h3>
-                    <form class="light-border" enctype="multipart/form-data" id="addPostForm">
-                        <input class="light-border" type="file" name="pic" placeholder="Choose file">
-                        <select class="light-border" id="own-dog-list" name="title" required>
-                            <option value="">Valitse koira</option></select>
-                        <input class="light-border" type="text" name="text" placeholder="text" required>
-                        <select class="add-location" name="locationId">
-                            <option value="">Valitse sijainti</option></select>
-                        <button class="light-border" type="submit">Upload</button>
-                    </form>
-
-            </div>
-            <div class="postcard">
-                <ul id="timeline"></ul>
-            </div>
-        </div>
-    </div>
+     <main class="feed" id="post-container" style="display: none;">
+         <div class="add-post">
+             <h3>Add post</h3>
+             <form class="light-border" enctype="multipart/form-data" id="add-post-form">
+                 <input class="light-border" type="file" name="pic" placeholder="Choose file">
+                 <select class="light-border" id="own-dog-list" name="title" required>
+                     <option value="">Valitse koira</option></select>
+                 <input class="light-border" type="text" name="text" placeholder="text" required>
+                 <select class="add-location" name="locationId">
+                     <option value="">Valitse sijainti</option></select>
+                 <button class="light-border" type="submit">Upload</button>
+             </form>
+         </div>
+         <div class="postcard">
+             <ul id="timeline"></ul>
+         </div>
+     </main>
 
      <!--------------------- COMMENT VIEW -------------------------->
- <div class="feed">
-     <div class="own-comment-container" style="display: none;">
-         <div class="addpost">
+ <main class="feed" >
+     <div id="own-comment-container" style="display: none;">
+         <div class="add-post">
              <div class="comment-wrapper">
                  <h3>Lisää kommentti</h3>
                  <form class="light-border" type="text" id="add-comment-form">
@@ -142,15 +141,15 @@
              </div>
          </div>
          <div class="postcard">
-             <ul id="timeline1"></ul>
+             <ul id="comment-list"></ul>
          </div>
      </div>
- </div>
+ </main>
  <!--------------------- EDIT OWN POSTS ------------------------>
 
-     <div class="feed">
+     <main class="feed">
          <div class="own-post-container" style="display: none;">
-             <div class="editpost">
+             <div class="edit-post">
                  <div class="edit-wrapper" style="display: none;">
                      <h3>Muokkaa viestejä</h3>
                      <form class="light-border" enctype="multipart/form-data" id="edit-post-form">
@@ -168,7 +167,7 @@
                  <ul id="own-posts"></ul>
              </div>
          </div>
-     </div>
+     </main>
  <div class="hide modal" id="image-modal">
      <a href="#" class="close">Close</a>
      <img src="" alt="">
@@ -177,7 +176,6 @@
     <!--------------------- LOG OUT BUTTON ------------------------>
 
     <footer id="log-out" style="display: none;">
-        <p id="user-info"></p>
         <button class="user-form">Kirjaudu ulos</button>
     </footer>
 

@@ -25,7 +25,6 @@ hr {
     border-width: 0;
 }
 
-
 /* General mods */
 
 body {
@@ -92,7 +91,7 @@ button {
     margin-bottom: 10px;
 }
 
-.postcontainer {
+#post-container {
     display: inline-block;
     max-width: 100%;
     width: 500px;
@@ -130,7 +129,7 @@ button {
     padding: 2rem;
 }
 
-.addpost {
+.add-post {
     max-width: 90%;
     background: #FFFFFF;
     border-radius: 6px;
@@ -143,7 +142,7 @@ button {
     flex-direction: column;
 }
 
-.addpost a.icon {
+.add-post a.icon {
     text-decoration: none;
     font-size: 35px;
     color: red;
@@ -152,7 +151,7 @@ button {
     right: 0;
 }
 
-.addpost button.entypo-check {
+.add-post button.entypo-check {
     border: none;
     text-decoration: none;
     font-size: 30px;
@@ -256,7 +255,7 @@ a:active {
     margin: 0 8px 0 auto;
 }
 
-.topnav {
+#top-nav {
     position: fixed;
     z-index: 2;
     font-size: 17px;
@@ -271,14 +270,14 @@ a:active {
 
 /* Hide the links inside the navigation menu (except for logo/home) */
 
-.topnav #myLinks {
+#top-nav #myLinks {
     display: none;
 }
 
 
 /* Style navigation menu links */
 
-.topnav a {
+#top-nav a {
     color: white;
     padding: 14px 16px;
     text-decoration: none;
@@ -289,7 +288,7 @@ a:active {
 
 /* Topnav logo */
 
-.topnav_logo {
+.top-nav-logo {
     position: absolute;
     display: inline-block;
     top: 50%;
@@ -300,7 +299,7 @@ a:active {
 
 /* Style the hamburger menu */
 
-.topnav a.icon {
+#top-nav a.icon {
     font-size: 30px;
     position: relative;
     display: inline-block;

@@ -1,13 +1,13 @@
 'use strict';
-const addComment = document.querySelector('#addCommentForm');
-const timeLine1 = document.querySelector('#timeline1');
-const ownCommentContainer = document.querySelector('.own-comment-container');
+const addComment = document.querySelector('#add-comment-form');
+const commentList = document.querySelector('#comment-list');
+const ownCommentContainer = document.querySelector('#own-comment-container');
 
 //	create comment views
 
 const createCommentCards = (comments) => {
 
-  timeLine1.innerHTML = '';
+  commentList.innerHTML = '';
   comments.forEach((comment) => {
 
     let date = moment(comment.timestamp).locale('fi').format('LLL');
@@ -24,7 +24,7 @@ const createCommentCards = (comments) => {
     li.appendChild(p1);
     li.appendChild(p2);
     li.appendChild(p3);
-    timeLine.appendChild(li);
+    commentList.appendChild(li);
   });
 };
 

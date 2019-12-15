@@ -1,19 +1,18 @@
 'use strict';
-//const url = 'http://localhost:3000';
-const url ='http://10.114.34.105/node';
+const url = 'http://localhost:3000';
+//const url ='http://10.114.34.105/node';
 //const url ='https://10.114.34.105/node';
 
 const loginWrapper = document.querySelector('#login-wrapper');
 const registerWrapper = document.querySelector('#register-wrapper');
-const postContainer = document.querySelector('.postcontainer');
+const postContainer = document.querySelector('#post-container');
 const userInfo = document.querySelector('#user-info');
 const logOut = document.querySelector('#log-out');
-const main = document.querySelector('main');
 const loginForm = document.querySelector('#login-form');
 const dogList = document.querySelector('#dog-list');
 const addUserForm = document.querySelector('#add-user-form');
 const addForm = document.querySelector('#add-dog-form');
-const topNav = document.querySelector('#topnav');
+const topNav = document.querySelector('#top-nav');
 
 //            Create dog cards
 
@@ -121,9 +120,10 @@ loginForm.addEventListener('submit', async (evt) => {
     // show/hide forms + dogs
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
-    main.style.display = 'none';
+    userInfo.style.display = 'none';
     postContainer.style.display = 'block';
     userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
+    topNav.style.display = 'block';
     getDog();
     getBreeds();
     getLocations();
@@ -150,10 +150,9 @@ logOut.addEventListener('click', async (evt) => {
     // show/hide forms + dogs
     loginWrapper.style.display = 'flex';
     logOut.style.display = 'none';
-    main.style.display = 'none';
-    topnav.style.display = 'block';
+    userInfo.style.display = 'none';
     postContainer.style.display = 'none';
-    topnav.style.display = 'none';
+    topNav.style.display = 'none';
     ownPostContainer.style.display = 'none';
     ownCommentContainer.style.display = 'none';
 
@@ -184,8 +183,9 @@ addUserForm.addEventListener('submit', async (evt) => {
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
-  main.style.display = 'block';
+  userInfo.style.display = 'block';
   postContainer.style.display = 'none';
+  topNav.style.display = 'block';
   userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
   getDog();
   getBreeds();
@@ -193,15 +193,16 @@ addUserForm.addEventListener('submit', async (evt) => {
 });
 
 //      When app starts, check if token exists and hide login form,
-//      show logout button and main content, get dogs and users
+//      show logout button and userInfo content, get dogs and users
 
 if (sessionStorage.getItem('token')) {
   console.log('logged in');
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
   logOut.style.display = 'block';
-  main.style.display = 'none';
+  userInfo.style.display = 'none';
   postContainer.style.display = 'block';
+  topNav.style.display = 'block';
   getDog();
   getBreeds();
   getLocations();
