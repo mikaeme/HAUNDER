@@ -1,5 +1,7 @@
 'use strict';
-const url = 'http://localhost:3000';
+//const url = 'http://localhost:3000';
+const url ='http://10.114.34.105/node';
+//const url ='https://10.114.34.105/node';
 
 const loginWrapper = document.querySelector('#login-wrapper');
 const registerWrapper = document.querySelector('#register-wrapper');
@@ -11,6 +13,7 @@ const loginForm = document.querySelector('#login-form');
 const dogList = document.querySelector('#dog-list');
 const addUserForm = document.querySelector('#add-user-form');
 const addForm = document.querySelector('#add-dog-form');
+const topNav = document.querySelector('#topnav');
 
 //            Create dog cards
 
@@ -145,11 +148,14 @@ logOut.addEventListener('click', async (evt) => {
     sessionStorage.removeItem('currentUser');
     alert('You have logged out');
     // show/hide forms + dogs
-    loginWrapper.style.display = 'block';
+    loginWrapper.style.display = 'flex';
     logOut.style.display = 'none';
     main.style.display = 'none';
+    topnav.style.display = 'block';
     postContainer.style.display = 'none';
+    topnav.style.display = 'none';
     ownPostContainer.style.display = 'none';
+    ownCommentContainer.style.display = 'none';
 
   }
   catch (e) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>HAUNDR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link href="css/style4.css" rel="stylesheet">
+    <link href="css/style0.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/favicon/favicon.png" type="image/png">
 </head>
@@ -30,50 +30,43 @@
          <span class="fa fa-bars"></span></a>
  </div>
 
-<!------------ LOGIN FORM ------------------->
-
-<div class="container">
-    <div class="forms" id="login-wrapper">
-        <div class="form-wrapper">
-            <h3>Kirjaudu sisään</h3>
-            <form id="login-form" class="user-form">
-                <div>
-                    <label>Käyttäjätunnus:</label>
-                    <input class="user-form" type="text" name="username"/>
-                </div>
-                <div>
-                    <label>Salasana:</label>
-                    <input class="user-form" type="password" name="password"/>
-                </div>
-                <div>
-                    <button id="login-button" type="submit">Log In</button>
-                </div>
-            </form>
-        </div>
-        <button class ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
-    </div>
+ <!------------ LOGIN FORM ------------------->
+ <div class="main-container">
+     <div class="forms" id="login-wrapper">
+         <h3>Kirjaudu sisään</h3>
+         <form id="login-form" class="user-form">
+             <div>
+                 <label>Käyttäjätunnus:</label>
+                 <input class="user-form" type="text" name="username"/>
+             </div>
+             <div>
+                 <label>Salasana:</label>
+                 <input class="user-form" type="password" name="password"/>
+             </div>
+             <div>
+                 <button id="login-button" type="submit">Log In</button>
+             </div>
+         </form>
+         <button class ="go-to-reg" type="button">Ei käyttäjätunnusta? Rekisteröidy täällä!</button>
+     </div>
 
     <!-------------- REGISTER FORM -------------->
 
     <div class="forms" id="register-wrapper" style="display: none;">
-        <div class="form-wrapper">
-            <h3>Rekisteröidy</h3>
-            <form class="user-form" id="add-user-form">
-                <input class="user-form"
-                       type="text"
-                       name="username"
-                       pattern=".{3,}"
-                       placeholder="Käyttäjätunnus"
-                       required>
-                <input class="user-form" type="password" name="password" pattern="(?=.*[A-Z]).{8,}"
-                       placeholder="Salasana" required>
-                <button id="register-button" type="submit">Tallenna</button>
-            </form>
-            <button class ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
-        </div>
+        <h3>Rekisteröidy</h3>
+        <form class="user-form" id="add-user-form">
+            <input class="user-form"
+                   type="text"
+                   name="username"
+                   pattern=".{3,}"
+                   placeholder="Käyttäjätunnus"
+                   required>
+            <input class="user-form" type="password" name="password" pattern="(?=.*[A-Z]).{8,}"
+                   placeholder="Salasana" required>
+            <button id="register-button" type="submit">Tallenna</button>
+        </form>
+        <button class ="go-to-login" type="button">Jo jäsen? Kirjaudu täällä!</button>
     </div>
-</div>
-
     <!-------------- USER HOMEPAGE -------------->
 
     <main style="display: none">
@@ -110,7 +103,6 @@
                        placeholder="Choose file">
                 <button id="upload-button" type="submit">Upload</button>
             </form>
-            <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
         </div>
     </main>
 
@@ -118,33 +110,32 @@
     <div class="feed">
         <div class="postcontainer" style="display: none;">
             <div class="addpost">
-                <div class="form-wrapper">
+
                     <h3>Add post</h3>
                     <form class="light-border" enctype="multipart/form-data" id="addPostForm">
                         <input class="light-border" type="file" name="pic" placeholder="Choose file">
-                        <input class="light-border" type="text" name="title" placeholder="title" required>
+                        <select class="light-border" id="own-dog-list" name="title" required>
+                            <option value="">Valitse koira</option></select>
                         <input class="light-border" type="text" name="text" placeholder="text" required>
                         <select class="add-location" name="locationId">
                             <option value="">Valitse sijainti</option></select>
                         <button class="light-border" type="submit">Upload</button>
                     </form>
-                </div>
+
             </div>
             <div class="postcard">
                 <ul id="timeline"></ul>
             </div>
-            <button class ="go-to-user" type="button">Omat tietoni</button>
-            <button class ="go-to-own-posts" type="button">Omat viestini</button>
         </div>
     </div>
-    
+
      <!--------------------- COMMENT VIEW -------------------------->
  <div class="feed">
      <div class="own-comment-container" style="display: none;">
          <div class="addpost">
              <div class="comment-wrapper">
                  <h3>Lisää kommentti</h3>
-                 <form class="light-border" enctype="multipart/form-data" id="addCommentForm">
+                 <form class="light-border" type="text" id="add-comment-form">
                      <textarea rows="4" cols="60" class="light-border" type="text" name="text" placeholder="kommentti" required></textarea>
                      <button class="light-border" type="submit">Lisää</button>
                  </form>
@@ -153,7 +144,6 @@
          <div class="postcard">
              <ul id="timeline1"></ul>
          </div>
-         <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
      </div>
  </div>
  <!--------------------- EDIT OWN POSTS ------------------------>
@@ -177,10 +167,13 @@
              <div class="postcard">
                  <ul id="own-posts"></ul>
              </div>
-             <button class ="go-to-posts" type="button">Siirry lukemaan viestejä</button>
          </div>
      </div>
-
+ <div class="hide modal" id="image-modal">
+     <a href="#" class="close">Close</a>
+     <img src="" alt="">
+ </div>
+</div>
     <!--------------------- LOG OUT BUTTON ------------------------>
 
     <footer id="log-out" style="display: none;">
@@ -188,11 +181,10 @@
         <button class="user-form">Kirjaudu ulos</button>
     </footer>
 
-
 <script src="js/forms.js"></script>
 <script src="./js/posts.js"></script>
  <script src="./js/lists.js"></script>
- <script src="./js/buttons.js"></script>
+ <script src="./js/buttons2.js"></script>
 <script src="./js/edit.js"></script>
 <script src="js/serialize.js"></script>
 <script src="js/moment.locales.js"></script>
