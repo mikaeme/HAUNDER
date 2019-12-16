@@ -6,7 +6,27 @@
     font-family: 'entypo', sans-serif;
 }
 
-/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+h3 {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+@import url(https://weloveiconfonts.com/api/?family=entypo);
+
+/* entypo */
+
+[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+}
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 h1 {
@@ -15,19 +35,19 @@ h1 {
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 h3 {
-    font-size: 18px;
+    font-size: 12px;
     font-family: 'Roboto', sans-serif;
 }
-
-/* General mods */
 
 html {
     scroll-behavior: smooth;
 }
 
-main {
-    overflow: scroll;
+hr {
+    border-width: 0;
 }
+
+/* General mods */
 
 body {
     background-color: #ff6600;
@@ -36,24 +56,81 @@ body {
     font-family: Verdana;
 }
 
-hr {
-    border-width: 0;
+main {
+    overflow: scroll;
 }
 
 ul {
     list-style: none;
 }
 
-figure {
-    margin: 0;
-    padding: 0;
+button {
+    padding: 2em;
+    background-color: #ff6600;
+    color: #ffffff;
+    margin: 1em;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
 }
-
 .main-container{
     padding-top: 100px;
-    background-color: #F7F7F7;
 }
-/* Login/Register */
+
+.light-background {
+    background-color: #f8f8f8;
+}
+
+.orange-background {
+    background-color: #ff6600;
+
+    /*---------- TOP NAV --------*/
+}
+#top-nav {
+    position: fixed;
+    z-index: 2;
+    font-size: 17px;
+    background-color: #ff6600;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 0;
+    letter-spacing: 1px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+/* Hide the links inside the navigation menu (except for logo/home) */
+
+#top-nav #myLinks {
+    display: none;
+}
+/* Style navigation menu links */
+
+#top-nav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+/* Topnav logo */
+
+.top-nav-logo {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+/* Style the hamburger menu */
+
+#top-nav a.icon {
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    right: 0;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-20%);
+}
+        /* ---------LOGIN/REGISTER ---------- */
 
 .accountsTitle {
     font-size: 28px;
@@ -203,7 +280,7 @@ a:active {
     margin: 0 8px 0 auto;
 }
 
-/* Create post */
+        /* --------CREATE POST -----------*/
 
 .postTitle {
     font-size: 14px;
@@ -239,9 +316,8 @@ a:active {
     padding: 0 0 0 12px;
     margin-bottom: 9px;
     box-shadow: 0 4px 8px 0 #0000000a;
-    /*transition: box-shadow 0.15s ease-out 0.15s,
-    border-color 0.15s ease-out, background 0.15s
-    ease-out 0.15s, color 0.15s ease-out;*/
+    /*transition: box-shadow 0.15s ease-out 0.15s, border-color 0.15s ease-out,
+    background 0.15s ease-out 0.15s, color 0.15s ease-out;*/
 }
 
 .add-post {
@@ -269,6 +345,10 @@ a:active {
     width: 50%;
 }
 
+.resp {
+    width: 90%;
+}
+
 .postbutton {
     border: 1px solid transparent;
     color: #ffffff;
@@ -283,115 +363,7 @@ a:active {
     display: block;
     width: 30%;
 }
-
-
-/*---------- TOP NAV --------*/
-
-#top-nav {
-    position: fixed;
-    z-index: 2;
-    font-size: 17px;
-    background-color: #ff6600;
-    color: #f1f1f1;
-    width: 100%;
-    padding: 0;
-    letter-spacing: 1px;
-    font-family: "Segoe UI", Arial, sans-serif;
-}
-/* Hide the links inside the navigation menu (except for logo/home) */
-
-#top-nav #myLinks {
-    display: none;
-}
-/* Style navigation menu links */
-
-#top-nav a {
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    display: block;
-}
-/* Topnav logo */
-
-.top-nav-logo {
-    position: absolute;
-    display: inline-block;
-    top: 50px;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-/* Style the hamburger menu */
-
-#top-nav a.icon {
-    font-size: 30px;
-    position: relative;
-    display: inline-block;
-    right: 0;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-20%);
-}
-
-/* menu */
-
-.menu {
-    position: relative;
-    display: inline-block;
-}
-
-.menu-content {
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.menu-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.menu-content a:hover {
-    background-color: #ddd
-}
-
-.show {
-    display: block;
-}
-
-
-
-/* Style menu */
-
-#top-nav button.hamburger {
-    border: none;
-    background-color: transparent;
-    color: white;
-    text-decoration: none;
-    font-size: 32px;
-    position: relative;
-    display: inline-block;
-    left: 20%;
-    top: 50%;
-    transform: translate(-50%);
-}
-
-#top-nav button.icon {
-    border: none;
-    background-color: transparent;
-    color: white;
-    text-decoration: none;
-    font-size: 32px;
-    position: relative;
-    display: inline-block;
-    left: 20%;
-    top: 50%;
-    transform: translate(-50%);
-}
+        /* ----- FOOTER -------*/
 
 .footer {
     position: fixed;
@@ -427,11 +399,7 @@ a:active {
     transform: translateY(-78%);
 }
 
-.resp {
-    width: 100%;
-}
-
-/* -------IMAGE MODAL ---------*/
+        /* -------IMAGE MODAL ---------*/
 .hide {
     display: none !important;
 }
@@ -464,7 +432,7 @@ a:active {
 }
 
 
-/* Error message */
+        /*--------- ERROR MESSAGE ------------*/
 
 .oopscontainer {
     margin: 0;

@@ -13,6 +13,7 @@ const dogList = document.querySelector('#dog-list');
 const addUserForm = document.querySelector('#add-user-form');
 const addForm = document.querySelector('#add-dog-form');
 const topNav = document.querySelector('#top-nav');
+const mainContainer = document.querySelector('.main-container')
 
 //            Create dog cards
 
@@ -124,6 +125,7 @@ loginForm.addEventListener('submit', async (evt) => {
     postContainer.style.display = 'block';
     userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
     topNav.style.display = 'block';
+    mainContainer.style.display = 'block'
     getDog();
     getBreeds();
     getLocations();
@@ -155,6 +157,7 @@ logOut.addEventListener('click', async (evt) => {
     topNav.style.display = 'none';
     ownPostContainer.style.display = 'none';
     ownCommentContainer.style.display = 'none';
+    mainContainer.style.display = 'none'
 
   }
   catch (e) {
@@ -186,7 +189,9 @@ addUserForm.addEventListener('submit', async (evt) => {
   userInfo.style.display = 'block';
   postContainer.style.display = 'none';
   topNav.style.display = 'block';
+  mainContainer.style.display = 'block'
   userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
+
   getDog();
   getBreeds();
   getLocations();
@@ -199,10 +204,10 @@ if (sessionStorage.getItem('token')) {
   console.log('logged in');
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
-  logOut.style.display = 'block';
-  userInfo.style.display = 'none';
   postContainer.style.display = 'block';
   topNav.style.display = 'block';
+  logOut.style.display = 'block';
+  mainContainer.style.display = 'block'
   getDog();
   getBreeds();
   getLocations();
