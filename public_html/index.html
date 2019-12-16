@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>HAUNDR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link href="css/style4.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/favicon/favicon.png" type="image/png">
 </head>
@@ -32,7 +32,7 @@
 
      <!------------ LOGIN FORM ------------------->
 
-     <div class="container" id="login-wrapper"">
+     <div class="login-container" id="login-wrapper">
          <img class="logo" src="./images/logologin.png">
          <h1 class="accountsTitle">Kirjaudu sisään</h1>
          <div class="forms">
@@ -54,7 +54,7 @@
 
     <!-------------- REGISTER FORM -------------->
 
-    <div class="forms" id="register-wrapper" style="display: none;">
+    <div class="login-container" id="register-wrapper" style="display: none;">
         <h3>Rekisteröidy</h3>
         <form class="user-form" id="add-user-form">
             <input class="user-form"
@@ -174,13 +174,13 @@
      <a href="#" class="close">Close</a>
      <img src="" alt="">
  </div>
-</div>
+
     <!--------------------- LOG OUT BUTTON ------------------------>
 
-    <footer id="log-out" style="display: none;">
+    <footer id="log-out">
         <button class="user-form">Kirjaudu ulos</button>
     </footer>
-
+ </div>
 <script src="js/forms.js"></script>
 <script src="./js/posts.js"></script>
  <script src="./js/lists.js"></script>

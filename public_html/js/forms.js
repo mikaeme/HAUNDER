@@ -120,12 +120,11 @@ loginForm.addEventListener('submit', async (evt) => {
     const currentId = parseInt(sessionStorage.getItem('currentUser'));
     // show/hide forms + dogs
     loginWrapper.style.display = 'none';
-    logOut.style.display = 'block';
     userInfo.style.display = 'none';
     postContainer.style.display = 'block';
     userInfo.innerHTML = `Tervetuloa ${json.user.username}`;
     topNav.style.display = 'block';
-    mainContainer.style.display = 'block'
+    mainContainer.style.display = 'block';
     getDog();
     getBreeds();
     getLocations();
@@ -151,13 +150,12 @@ logOut.addEventListener('click', async (evt) => {
     alert('You have logged out');
     // show/hide forms + dogs
     loginWrapper.style.display = 'flex';
-    logOut.style.display = 'none';
     userInfo.style.display = 'none';
     postContainer.style.display = 'none';
     topNav.style.display = 'none';
     ownPostContainer.style.display = 'none';
     ownCommentContainer.style.display = 'none';
-    mainContainer.style.display = 'none'
+    mainContainer.style.display = 'none';
 
   }
   catch (e) {
@@ -185,7 +183,6 @@ addUserForm.addEventListener('submit', async (evt) => {
   // show/hide forms + dogs
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'none';
-  logOut.style.display = 'block';
   userInfo.style.display = 'block';
   postContainer.style.display = 'none';
   topNav.style.display = 'block';
@@ -206,8 +203,7 @@ if (sessionStorage.getItem('token')) {
   registerWrapper.style.display = 'none';
   postContainer.style.display = 'block';
   topNav.style.display = 'block';
-  logOut.style.display = 'block';
-  mainContainer.style.display = 'block'
+  mainContainer.style.display = 'block';
   getDog();
   getBreeds();
   getLocations();

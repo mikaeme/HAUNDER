@@ -30,7 +30,7 @@ goToRegister.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'none';
   registerWrapper.style.display = 'flex';
-  postContainer.style.display = 'none';
+  mainContainer.style.display = 'none';
 });
 //          Go to login form
 
@@ -38,7 +38,7 @@ goToLogin.addEventListener('click', async (evt) => {
   evt.preventDefault();
   loginWrapper.style.display = 'flex';
   registerWrapper.style.display = 'none';
-  postContainer.style.display = 'none';
+  mainContainer.style.display = 'none';
 });
 
 //          Go to feed view
@@ -51,6 +51,6 @@ goToPosts.forEach((nappi) => {
     userInfo.style.display = 'none';
     ownPostContainer.style.display = 'none';
     postContainer.style.display = 'block';
-    logOut.style.display = 'block';
+    mainContainer.style.display = 'block';
   });
 });
